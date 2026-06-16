@@ -10,10 +10,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--neg:#0a0a0a;--mag:#FF0080;--magd:#cc0066;--magl:#ffe0f0;--cya:#00BFFF;--cyad:#0099cc;--cyal:#e0f7ff;--vio:#4040CC;--gri:#f5f5f5;--gr2:#e0e0e0;--rad:12px;--sha:0 2px 12px rgba(0,0,0,.12)}
 body{font-family:Georgia,serif;background:var(--gri);color:#1a1a1a;min-height:100vh}
-/* HEADER */
 .hdr{background:var(--neg);overflow:hidden}
 .hdr-main{display:flex;align-items:center;gap:14px;padding:12px 20px}
-.logo{width:68px;height:68px;object-fit:contain;border-radius:50%;border:2px solid var(--mag);background:var(--neg);flex-shrink:0}
+.logo{width:68px;height:68px;object-fit:contain;border-radius:50%;border:2px solid var(--mag);background:#fff;flex-shrink:0}
 .hdr-title h1{font-size:20px;color:var(--mag);font-weight:700;line-height:1.2}
 .hdr-title p{font-size:11px;color:var(--cya);margin-top:2px;font-family:system-ui,sans-serif}
 .hdr-right{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
@@ -25,7 +24,6 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 .nbtn:hover,.nbtn.act{background:rgba(255,255,255,.15);border-bottom-color:var(--cya)}
 .anav{display:none!important}
 .is-admin .anav{display:block!important}
-/* AVISO */
 .aviso{background:linear-gradient(135deg,var(--neg),#1a1a2e);padding:14px 20px;border-bottom:2px solid var(--mag)}
 .aviso-inner{max-width:900px;margin:0 auto}
 .aviso-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -36,36 +34,32 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 .rbtn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;font-family:system-ui,sans-serif;transition:transform .15s}
 .rbtn:hover{transform:scale(1.05)}
 .rfb{background:#1877F2;color:#fff}.rtt{background:#000;color:#fff}.ryt{background:red;color:#fff}
-/* WRAP */
 .wrap{max-width:1100px;margin:0 auto;padding:16px}
 .page{display:none}.page.act{display:block}
-/* STABS */
-.stabs{display:flex;gap:4px;margin-bottom:14px;background:#fff;border-radius:var(--rad);padding:4px;box-shadow:var(--sha)}
-.stab{flex:1;padding:8px 4px;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:system-ui,sans-serif;background:transparent;color:#666;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.stabs{display:flex;gap:4px;margin-bottom:14px;background:#fff;border-radius:var(--rad);padding:4px;box-shadow:var(--sha);flex-wrap:wrap}
+.stab{flex:1;padding:8px 4px;border:none;border-radius:8px;font-size:12px;cursor:pointer;font-family:system-ui,sans-serif;background:transparent;color:#666;display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;min-width:80px}
 .stab.act{background:var(--mag);color:#fff}
 .stab:not(.act):hover{background:var(--magl);color:var(--magd)}
-/* SEARCH */
 .sbox{background:#fff;border-radius:var(--rad);padding:14px;margin-bottom:14px;box-shadow:var(--sha)}
 .srow{display:flex;gap:8px;flex-wrap:wrap}
-.sinp{flex:1;min-width:180px;padding:9px 12px;border:1.5px solid var(--gr2);border-radius:8px;font-size:14px;font-family:system-ui,sans-serif;outline:none}
+.sinp{flex:1;min-width:160px;padding:9px 12px;border:1.5px solid var(--gr2);border-radius:8px;font-size:14px;font-family:system-ui,sans-serif;outline:none}
 .sinp:focus{border-color:var(--mag)}
 .ssel{padding:9px 8px;border:1.5px solid var(--gr2);border-radius:8px;font-size:13px;font-family:system-ui,sans-serif;background:#fff;outline:none;cursor:pointer}
 .sbtn{padding:9px 18px;background:var(--mag);color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-family:system-ui,sans-serif;font-weight:600}
 .sbtn:hover{background:var(--magd)}
-/* GRID */
 .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.bcard{background:#fff;border-radius:var(--rad);overflow:hidden;box-shadow:var(--sha);transition:transform .15s,box-shadow .15s;border:1px solid var(--gr2)}
+.bcard{background:#fff;border-radius:var(--rad);overflow:hidden;box-shadow:var(--sha);transition:transform .15s,box-shadow .15s;border:1px solid var(--gr2);cursor:pointer}
 .bcard:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,0,128,.15)}
 .bcard.prest{border-color:#ffb3b3;background:#fff8f8}
-.bcov{height:130px;background:linear-gradient(135deg,var(--magl),var(--cyal));display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.bcov{height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;font-size:52px}
 .bcov img{width:100%;height:100%;object-fit:cover}
-.nocover{font-size:40px}
 .ebadge{position:absolute;top:6px;right:6px;font-size:9px;padding:2px 7px;border-radius:99px;font-weight:700;font-family:system-ui,sans-serif}
 .edisp{background:#d4edda;color:#155724}.eprest{background:#f8d7da;color:#721c24}
 .bbody{padding:10px 12px}
 .bcod{font-size:10px;color:var(--mag);font-weight:700;font-family:system-ui,sans-serif;margin-bottom:2px}
 .btit{font-size:13px;font-weight:700;color:var(--neg);line-height:1.3;margin-bottom:3px}
-.baut{font-size:11px;color:#555;margin-bottom:4px;font-family:system-ui,sans-serif}
+.baut{font-size:11px;color:#555;margin-bottom:3px;font-family:system-ui,sans-serif}
+.bubic{font-size:10px;color:var(--cyad);font-family:system-ui,sans-serif;margin-bottom:4px;display:flex;align-items:center;gap:3px}
 .btema{font-size:10px;padding:2px 7px;border-radius:99px;background:var(--cyal);color:var(--cyad);font-weight:600;font-family:system-ui,sans-serif;display:inline-block;margin-bottom:4px;margin-right:3px}
 .bpinfo{font-size:10px;color:#c0392b;background:#fff0f0;border-radius:6px;padding:4px 7px;margin-bottom:5px;font-family:system-ui,sans-serif}
 .bacts{display:flex;gap:4px;flex-wrap:wrap}
@@ -73,13 +67,11 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 .bpbtn{background:var(--mag);color:#fff;flex:1;justify-content:center}
 .bpbtn:hover{background:var(--magd)}
 .bpbtn:disabled{opacity:.5;cursor:not-allowed}
-.bcpbtn{background:var(--cyal);color:var(--cyad)}
 .bdgbtn{background:var(--magl);color:var(--magd)}
 .bebtn{background:#fff3cd;color:#856404}
 .bdbtn{background:#f8d7da;color:#721c24}
 .aacts{display:none;gap:4px;margin-top:4px}
 .is-admin .aacts{display:flex}
-/* FORM */
 .fcard{background:#fff;border-radius:var(--rad);padding:18px;box-shadow:var(--sha);margin-bottom:14px}
 .fcard h3{font-size:15px;color:var(--magd);margin-bottom:12px;display:flex;align-items:center;gap:8px;border-bottom:2px solid var(--magl);padding-bottom:9px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -100,32 +92,36 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 .merr{display:none;background:#f8d7da;border-radius:8px;padding:9px 12px;font-size:12px;color:#721c24;margin-top:8px;font-family:system-ui,sans-serif;align-items:center;gap:6px}
 .merr.show{display:flex}
 .ibox{background:var(--cyal);border-radius:8px;padding:10px 13px;font-size:13px;color:#00607a;margin-bottom:11px;font-family:system-ui,sans-serif;line-height:1.6;border-left:4px solid var(--cya)}
-/* STATS */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .scard{background:#fff;border-radius:var(--rad);padding:13px 15px;box-shadow:var(--sha);border-left:4px solid var(--mag)}
 .scard .sv{font-size:26px;font-weight:700;color:var(--mag);font-family:system-ui,sans-serif}
 .scard .sl{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.05em;font-family:system-ui,sans-serif;margin-top:2px}
-/* TABLE */
 .twrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .dtbl{width:100%;border-collapse:collapse;font-size:12px;font-family:system-ui,sans-serif}
 .dtbl th{background:var(--neg);color:#fff;padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;white-space:nowrap}
 .dtbl td{padding:7px 10px;border-bottom:.5px solid var(--gr2);color:#111;vertical-align:middle}
 .dtbl tr:hover td{background:#fef0f7}
 .dtbl tr:last-child td{border-bottom:none}
-/* MODAL */
 .mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;z-index:50;padding:16px}
 .mbg.open{display:flex}
-.modal{background:#fff;border-radius:var(--rad);max-width:480px;width:100%;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal{background:#fff;border-radius:var(--rad);max-width:520px;width:100%;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .mhdr{background:linear-gradient(135deg,var(--mag),var(--vio));padding:14px 18px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .mhdr h2{font-size:15px;color:#fff;font-weight:600}
 .mclose{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.8);font-size:22px;padding:0;line-height:1}
+.mclose:hover{color:#fff}
 .mbody{padding:18px;overflow-y:auto;flex:1}
-.mfoot{padding:12px 18px;background:var(--gri);display:flex;gap:8px;flex-shrink:0;border-top:1px solid var(--gr2)}
-/* LOGIN */
+.mfoot{padding:12px 18px;background:var(--gri);display:flex;gap:8px;flex-shrink:0;border-top:1px solid var(--gr2);flex-wrap:wrap}
+/* DETALLE LIBRO */
+.det-cover{width:100%;height:180px;display:flex;align-items:center;justify-content:center;border-radius:10px;overflow:hidden;margin-bottom:14px;font-size:70px;background:linear-gradient(135deg,var(--magl),var(--cyal))}
+.det-cover img{width:100%;height:100%;object-fit:cover}
+.det-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:.5px solid var(--gr2);font-size:13px;gap:10px}
+.det-row:last-child{border-bottom:none}
+.det-k{font-size:10px;color:var(--magd);text-transform:uppercase;font-weight:700;font-family:system-ui,sans-serif;flex-shrink:0;padding-top:2px}
+.det-v{color:#111;font-family:system-ui,sans-serif;text-align:right;flex:1}
 .lov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;z-index:100;padding:16px}
 .lov.open{display:flex}
 .lbox{background:#fff;border-radius:var(--rad);padding:28px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);text-align:center}
-.llogo{width:78px;height:78px;border-radius:50%;border:3px solid var(--mag);margin:0 auto 14px;display:block;object-fit:contain;background:var(--neg)}
+.llogo{width:90px;height:90px;border-radius:50%;border:3px solid var(--mag);margin:0 auto 14px;display:block;object-fit:contain;background:#fff}
 .lbox h2{font-size:19px;color:var(--neg);margin-bottom:5px}
 .lbox p{font-size:13px;color:#666;margin-bottom:18px;font-family:system-ui,sans-serif}
 .pwrap{display:flex;border:1.5px solid var(--gr2);border-radius:8px;overflow:hidden}
@@ -135,41 +131,37 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 .lbln{width:100%;padding:12px;background:linear-gradient(135deg,var(--mag),var(--vio));color:#fff;border:none;border-radius:9px;font-size:15px;cursor:pointer;font-family:Georgia,serif;font-weight:700;margin-top:12px}
 .lerr{display:none;background:#f8d7da;border-radius:8px;padding:8px;font-size:13px;color:#721c24;margin-top:10px;font-family:system-ui,sans-serif}
 .lerr.show{display:block}
-/* LOADING */
 .ldov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:200}
 .ldov.show{display:flex}
 .ldbx{background:#fff;border-radius:var(--rad);padding:24px 32px;text-align:center}
 .spin{width:34px;height:34px;border:4px solid var(--magl);border-top-color:var(--mag);border-radius:50%;animation:sp .7s linear infinite;margin:0 auto 10px}
 @keyframes sp{to{transform:rotate(360deg)}}
-/* DROPZONE */
 .dz{border:2px dashed var(--gr2);border-radius:var(--rad);padding:22px;text-align:center;background:var(--gri);cursor:pointer;margin-bottom:10px}
 .dz:hover,.dz.over{border-color:var(--mag);background:var(--magl)}
 .dz i{font-size:34px;color:var(--mag);display:block;margin-bottom:7px}
 .dz p{font-size:13px;color:#555;font-family:system-ui,sans-serif;font-weight:500}
 .dz small{font-size:11px;color:#888;font-family:system-ui,sans-serif}
 .file-inp{display:none}
-/* CHARTS */
 .cbar{margin:6px 0}
 .cbl{font-size:12px;color:#333;font-family:system-ui,sans-serif;margin-bottom:2px}
 .cbbg{background:var(--gr2);border-radius:99px;height:20px;overflow:hidden}
 .cbfill{background:linear-gradient(90deg,var(--mag),var(--cya));height:100%;border-radius:99px;display:flex;align-items:center;padding-left:7px;font-size:10px;color:#fff;font-weight:700;font-family:system-ui,sans-serif;min-width:28px}
-/* RESPONSIVE */
 @media(max-width:640px){
   .hdr-title h1{font-size:15px}.hdr-main{padding:10px 13px}.logo{width:50px;height:50px}
   .wrap{padding:10px}.bgrid{grid-template-columns:repeat(2,1fr);gap:9px}
-  .fgrid{grid-template-columns:1fr}.fg.full{grid-column:1}
+  .fgrid{grid-column:1/-1;grid-template-columns:1fr}.fg.full{grid-column:1}
   .sinp{font-size:16px}.ssel{font-size:16px}.fg input,.fg select,.fg textarea{font-size:16px}
   .sgrid{grid-template-columns:repeat(2,1fr)}
+  .det-cover{height:140px;font-size:52px}
 }
 @media(max-width:360px){.bgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="hdr">
   <div class="hdr-main">
-    <img class="logo" id="logoimg" src="" alt="Logo">
+    <img class="logo" id="logoimg" src="https://i.imgur.com/placeholder.png" alt="Logo Los Libros Son de Todos" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23fff%22/%3E%3Ctext x=%2250%22 y=%2260%22 text-anchor=%22middle%22 font-size=%2240%22%3E🐦%3C/text%3E%3C/svg%3E'">
     <div class="hdr-title">
       <h1>Biblioteca Los Libros Son de Todos</h1>
       <p>Catálogo en línea · Préstamos comunitarios</p>
@@ -182,6 +174,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   </div>
   <nav class="hnav">
     <button class="nbtn act" onclick="goPage('cat')">📚 Catálogo</button>
+    <button class="nbtn anav" onclick="goPage('sol')">📬 Solicitudes</button>
     <button class="nbtn anav" onclick="goPage('usu')">👥 Usuarios</button>
     <button class="nbtn anav" onclick="goPage('catadmin')">✏️ Catalogación</button>
     <button class="nbtn anav" onclick="goPage('prest')">📋 Préstamos</button>
@@ -189,7 +182,6 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   </nav>
 </div>
 
-<!-- AVISO -->
 <div class="aviso">
   <div class="aviso-inner">
     <div class="aviso-top">
@@ -211,8 +203,9 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 <div class="page act" id="page-cat">
   <div class="sbox">
     <div class="srow">
-      <input class="sinp" type="text" id="sq" placeholder="Buscar título, autor, tema, ubicación...">
+      <input class="sinp" type="text" id="sq" placeholder="Buscar título, autor, tema...">
       <select class="ssel" id="st1"><option value="">Todos los temas</option></select>
+      <select class="ssel" id="subic"><option value="">Todas las ubicaciones</option></select>
       <select class="ssel" id="san"><option value="">Cualquier año</option></select>
       <select class="ssel" id="sdi"><option value="">Todos</option><option value="d">Disponibles</option><option value="p">Prestados</option></select>
       <button class="sbtn" onclick="renderCat()"><i class="ti ti-search"></i> Buscar</button>
@@ -220,6 +213,14 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   </div>
   <div style="font-size:12px;color:#666;font-family:system-ui,sans-serif;margin-bottom:10px" id="catcnt"></div>
   <div class="bgrid" id="bgrid"><div style="grid-column:1/-1;text-align:center;padding:40px;font-family:system-ui,sans-serif;color:#888"><div class="spin" style="margin:0 auto 12px"></div>Cargando catálogo...</div></div>
+</div>
+
+<!-- SOLICITUDES (solo admin) -->
+<div class="page" id="page-sol">
+  <div class="fcard">
+    <h3><i class="ti ti-bell" style="color:var(--mag)"></i> Solicitudes de préstamo del público</h3>
+    <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Código</th><th>Título</th><th>Nombre</th><th>Celular</th><th>WhatsApp</th></tr></thead><tbody id="soltb"></tbody></table></div>
+  </div>
 </div>
 
 <!-- USUARIOS -->
@@ -240,7 +241,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
     <div class="fcard">
       <h3><i class="ti ti-user-plus" style="color:var(--mag)"></i> Agregar usuario</h3>
       <div class="fgrid">
-        <div class="fg"><label>ID *</label><input type="text" id="uid" placeholder="USR-001"></div>
+        <div class="fg"><label>ID *</label><input type="text" id="uid" placeholder="Ej: 12345678"></div>
         <div class="fg"><label>Nombre *</label><input type="text" id="unom" placeholder="Nombre completo"></div>
         <div class="fg"><label>Sexo *</label><select id="usexo"><option value="">Selecciona</option><option>Masculino</option><option>Femenino</option><option>Otro</option></select></div>
         <div class="fg"><label>Nacimiento</label><input type="date" id="unac"></div>
@@ -352,12 +353,11 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
     <button class="stab act" onclick="stabPr('lista')"><i class="ti ti-list"></i> Registros</button>
     <button class="stab" onclick="stabPr('nuevo')"><i class="ti ti-plus"></i> Nuevo</button>
     <button class="stab" onclick="stabPr('excel')"><i class="ti ti-file-spreadsheet"></i> Excel</button>
-    <button class="stab" onclick="stabPr('sol')"><i class="ti ti-bell"></i> Solicitudes</button>
   </div>
   <div id="pr-lista">
     <div class="fcard">
       <h3><i class="ti ti-clipboard-list" style="color:var(--mag)"></i> Registros de préstamos</h3>
-      <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Lugar</th><th>ID Usu.</th><th>Código</th><th>Título</th><th>Autor</th><th>Plazo</th><th>Devuelto</th><th>Nota</th><th></th></tr></thead><tbody id="prestb"></tbody></table></div>
+      <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Lugar</th><th>ID Usu.</th><th>Nombre</th><th>Código</th><th>Título</th><th>Plazo</th><th>Devuelto</th><th>Nota</th><th></th></tr></thead><tbody id="prestb"></tbody></table></div>
     </div>
   </div>
   <div id="pr-nuevo" style="display:none">
@@ -366,8 +366,12 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
       <div class="fgrid">
         <div class="fg"><label>Fecha *</label><input type="date" id="pfecha"></div>
         <div class="fg"><label>Lugar</label><input type="text" id="plugar" placeholder="Sede..."></div>
-        <div class="fg"><label>ID Usuario *</label><input type="text" id="puid" placeholder="USR-001" oninput="fillUsu()"></div>
+        <div class="fg"><label>ID Usuario *</label><input type="text" id="puid" placeholder="Ej: 12345678" oninput="fillUsu()"></div>
         <div class="fg"><label>Nombre usuario</label><input type="text" id="punom" readonly style="background:#f8f8f8"></div>
+        <div class="fg"><label>Sexo</label><input type="text" id="pusexo" readonly style="background:#f8f8f8"></div>
+        <div class="fg"><label>Nacimiento</label><input type="text" id="punac" readonly style="background:#f8f8f8"></div>
+        <div class="fg"><label>Distrito</label><input type="text" id="pudist" readonly style="background:#f8f8f8"></div>
+        <div class="fg"><label>Celular usuario</label><input type="text" id="pucel" readonly style="background:#f8f8f8"></div>
         <div class="fg"><label>Código libro *</label><input type="text" id="pcod" placeholder="TT-0001" oninput="fillLib()"></div>
         <div class="fg"><label>Título</label><input type="text" id="ptit" readonly style="background:#f8f8f8"></div>
         <div class="fg"><label>Autor</label><input type="text" id="paut" readonly style="background:#f8f8f8"></div>
@@ -383,7 +387,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   <div id="pr-excel" style="display:none">
     <div class="fcard">
       <h3><i class="ti ti-file-spreadsheet" style="color:var(--mag)"></i> Cargar préstamos desde Excel</h3>
-      <div class="ibox">Columnas: <strong>Fecha, Lugar, IDUsuario, CodigoLibro, Titulo, Autor, Plazo, Devolucion, Nota</strong></div>
+      <div class="ibox">Columnas: <strong>Fecha, Lugar, IDUsuario, NombreUsuario, Sexo, Nacimiento, Distrito, CelularUsuario, CodigoLibro, Titulo, Autor, Plazo, Devolucion, Nota</strong></div>
       <button class="bsec" style="margin-bottom:10px" onclick="dlTpl('prest')"><i class="ti ti-download"></i> Descargar plantilla</button>
       <div class="dz" id="prdz" onclick="document.getElementById('prfile').click()" ondragover="dov(event,'prdz')" ondragleave="dlv('prdz')" ondrop="ddrop(event,'prest')"><i class="ti ti-file-upload"></i><p>Toca o arrastra tu archivo</p><small>.xlsx o .xls</small></div>
       <input type="file" id="prfile" class="file-inp" accept=".xlsx,.xls" onchange="loadXL(event,'prest')">
@@ -395,12 +399,6 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
         </div>
         <div class="mok" id="primpok"><i class="ti ti-check"></i> <span id="primptxt"></span></div>
       </div>
-    </div>
-  </div>
-  <div id="pr-sol" style="display:none">
-    <div class="fcard">
-      <h3><i class="ti ti-bell" style="color:var(--mag)"></i> Solicitudes del público</h3>
-      <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Código</th><th>Título</th><th>Nombre</th><th>Celular</th><th></th></tr></thead><tbody id="soltb"></tbody></table></div>
     </div>
   </div>
 </div>
@@ -423,14 +421,14 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   </div>
 </div>
 
-</div><!-- /wrap -->
+</div>
 
 <!-- MODAL SOLICITUD -->
 <div class="mbg" id="msol">
   <div class="modal">
     <div class="mhdr"><h2>📚 Solicitar préstamo</h2><button class="mclose" onclick="closeMod('msol')"><i class="ti ti-x"></i></button></div>
     <div class="mbody">
-      <div class="ibox" style="margin-bottom:12px">Llena este formulario y <strong>nosotros te escribiremos por WhatsApp</strong>.</div>
+      <div class="ibox" style="margin-bottom:12px">Llena este formulario, haz clic en el botón <strong>"Enviar solicitud"</strong>, y nosotros te escribiremos a tu <strong>WhatsApp</strong>.</div>
       <div id="solinf" style="background:var(--magl);border-radius:8px;padding:11px;margin-bottom:12px;font-family:system-ui,sans-serif;font-size:13px"></div>
       <div class="fgrid">
         <div class="fg full"><label>Tu nombre *</label><input type="text" id="solnom" placeholder="Nombre y apellido"></div>
@@ -443,6 +441,18 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
       <button class="bmain" onclick="envSol()"><i class="ti ti-send"></i> Enviar solicitud</button>
       <button class="bsec" onclick="closeMod('msol')">Cancelar</button>
     </div>
+  </div>
+</div>
+
+<!-- MODAL DETALLE LIBRO -->
+<div class="mbg" id="mdet">
+  <div class="modal">
+    <div class="mhdr"><h2 id="det-titulo">Detalle del libro</h2><button class="mclose" onclick="closeMod('mdet')"><i class="ti ti-x"></i></button></div>
+    <div class="mbody">
+      <div class="det-cover" id="det-cover"></div>
+      <div id="det-rows"></div>
+    </div>
+    <div class="mfoot" id="det-foot"></div>
   </div>
 </div>
 
@@ -510,6 +520,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
         <div class="fg"><label>Fecha</label><input type="date" id="epfecha"></div>
         <div class="fg"><label>Lugar</label><input type="text" id="eplugar"></div>
         <div class="fg"><label>ID Usuario</label><input type="text" id="epuid"></div>
+        <div class="fg"><label>Nombre</label><input type="text" id="epunom"></div>
         <div class="fg"><label>Código libro</label><input type="text" id="epcod"></div>
         <div class="fg full"><label>Título</label><input type="text" id="eptit"></div>
         <div class="fg"><label>Autor</label><input type="text" id="epaut"></div>
@@ -532,7 +543,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
   <div class="modal" style="max-width:520px">
     <div class="mhdr"><h2>✏️ Editar mensaje de bienvenida</h2><button class="mclose" onclick="closeMod('maviso')"><i class="ti ti-x"></i></button></div>
     <div class="mbody">
-      <div class="ibox">Usa <strong>&lt;strong&gt;texto&lt;/strong&gt;</strong> para negritas y <strong>&lt;br&gt;</strong> para saltos de línea.</div>
+      <div class="ibox">Usa <strong>&lt;strong&gt;texto&lt;/strong&gt;</strong> para negritas.</div>
       <div class="fg full" style="margin-top:10px">
         <label>Mensaje</label>
         <textarea id="aviso-editor" style="min-height:130px;font-size:13px;line-height:1.6"></textarea>
@@ -573,17 +584,45 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 <script>
 var API="https://script.google.com/macros/s/AKfycbzOzRgC3nlvyVY6JWAfWAdWGgquP3az3dtlQf0WB8StPSj9aCJUbSOkEWi3hyt6IXo/exec";
 var PWD="mundial2026";
-var LOGO_SVG="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a0a0a'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='26' fill='%23FF0080'%3E%F0%9F%93%9A%3C/text%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='7.5' fill='%2300BFFF' font-family='Georgia'%3ELOS LIBROS%3C/text%3E%3Ctext x='50' y='73' text-anchor='middle' font-size='7.5' fill='%2300BFFF' font-family='Georgia'%3ESON DE TODOS%3C/text%3E%3C/svg%3E";
+var LOGO_URL="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/120px-PNG_transparency_demonstration_1.png";
+
+// Íconos por Tema1
+var TEMA_ICONS={
+  "Historia":"🏛️","Novela":"📖","Diccionario":"📑","Cuentos":"🧚","Leyendas":"🌙",
+  "Política":"🏛","Humor":"😂","Poesía":"✍️","Ensayo":"📝","Teatro":"🎭",
+  "Economía":"💰","Teología":"✝️","Cristianismo":"⛪","Sociología":"👥","Esoterismo":"🔮",
+  "Novela negra":"🔍","Literatura oral":"🗣️","Testimonio":"📣","Biografía":"👤","Literatura":"📚",
+  "Filosofía":"🤔","Ensayo literario":"🖊️","Epopeya":"⚔️","Epistolario":"✉️","Autoayuda":"💪",
+  "Crónica":"📰","Medicina Natural":"🌿","Psicología":"🧠","Educación":"🎓","Periodismo":"📡",
+  "Arqueología":"🏺","Religión":"🙏","Matemáticas":"📐","Filología":"🔤","Botánica":"🌱",
+  "Arte":"🎨","Urbanismo":"🏙️","Mitología":"⚡","Astrofísica":"🔭","Tradiciones":"🎪",
+  "Metodología de la Investigación":"🔬","Democracia":"🗳️","Administración de empresas":"💼",
+  "Fútbol":"⚽","Vinos":"🍷","Geopolítica":"🌍","Arquitectura":"🏗️","Deporte":"🏅",
+  "Antropología":"🦴","Diario":"📔","Negocio":"📊","Publicidad":"📢","Ética":"⚖️",
+  "Geografía":"🗺️","Historieta":"💬","Derecho":"⚖","Nutrición":"🥗","Novela gráfica":"🎨",
+  "Música":"🎵","Proverbios":"💬","Memorias":"🕰️","Medio Ambiente":"🌳","Deportes":"🏆"
+};
+
 var LH=["Código","Título","Autor","Editorial","Año","Páginas","Tema1","Tema2","Ubicación","Portada","Digital"];
 var UH=["ID","Nombre","Sexo","Nacimiento","Dirección","Distrito","Celular","Ref1","Ref2","Ref3"];
-var PH=["Fecha","Lugar","IDUsuario","CodigoLibro","Titulo","Autor","Plazo","Devolucion","Nota"];
+var PH=["Fecha","Lugar","IDUsuario","NombreUsuario","Sexo","Nacimiento","Distrito","CelularUsuario","CodigoLibro","Titulo","Autor","Plazo","Devolucion","Nota"];
 var SH=["Fecha","CodigoLibro","Titulo","Nombre","Celular"];
+
 var isAdmin=false,libros=[],usuarios=[],prestamos=[],solicitudes=[],prevs={};
-var editLib=null,editUsu=null,editPrest=null,solLib=null;
+var editLib=null,editUsu=null,editPrest=null,solLib=null,detLib=null;
 
 // LOGO
+var LOGO_SVG="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23fff'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='50'%3E🐦%3C/text%3E%3C/svg%3E";
+// Usar la imagen real del colibrí — fondo blanco
+var REAL_LOGO="https://i.imgur.com/YourLogoHere.png"; // <-- reemplazar con URL real
 document.getElementById("logoimg").src=LOGO_SVG;
 document.getElementById("llogo").src=LOGO_SVG;
+
+// NORMALIZAR texto (quitar tildes para búsqueda)
+function norm(s){
+  return (s||"").toString().toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
 
 // API
 function showLd(t){document.getElementById("ldtxt").textContent=t||"Procesando...";document.getElementById("ldovdiv").classList.add("show");}
@@ -592,25 +631,13 @@ function hideLd(){document.getElementById("ldovdiv").classList.remove("show");}
 function apiGet(sheet){
   return fetch(API+"?sheet="+encodeURIComponent(sheet),{method:"GET",redirect:"follow"})
     .then(function(r){return r.text();})
-    .then(function(txt){
-      try{return JSON.parse(txt);}
-      catch(e){console.error("Parse error sheet="+sheet,txt.substring(0,200));throw new Error("Error de respuesta");}
-    });
+    .then(function(txt){try{return JSON.parse(txt);}catch(e){throw new Error("Error de respuesta");}});
 }
-
 function apiPost(payload){
-  var body=JSON.stringify(Object.assign({},payload,{password:PWD}));
-  return fetch(API,{method:"POST",redirect:"follow",body:body,headers:{"Content-Type":"text/plain"}})
+  return fetch(API,{method:"POST",redirect:"follow",body:JSON.stringify(Object.assign({},payload,{password:PWD})),headers:{"Content-Type":"text/plain"}})
     .then(function(r){return r.text();})
-    .then(function(txt){
-      try{
-        var d=JSON.parse(txt);
-        if(d.status!=="ok")throw new Error(d.message||"Error");
-        return d;
-      }catch(e){console.error("apiPost parse error:",txt.substring(0,200));throw new Error("Error servidor");}
-    });
+    .then(function(txt){try{var d=JSON.parse(txt);if(d.status!=="ok")throw new Error(d.message||"Error");return d;}catch(e){throw new Error("Error servidor");}});
 }
-
 function loadSheet(sheet,cb){
   apiGet(sheet).then(function(d){cb(Array.isArray(d)?d:[]);}).catch(function(){cb([]);});
 }
@@ -647,32 +674,30 @@ function goPage(p){
   document.querySelectorAll(".page").forEach(function(x){x.classList.remove("act");});
   document.querySelectorAll(".nbtn").forEach(function(x){x.classList.remove("act");});
   document.getElementById("page-"+p).classList.add("act");
-  var idx={"cat":0,"usu":1,"catadmin":2,"prest":3,"est":4};
+  var idx={"cat":0,"sol":1,"usu":2,"catadmin":3,"prest":4,"est":5};
   var btns=document.querySelectorAll(".nbtn");
   if(btns[idx[p]])btns[idx[p]].classList.add("act");
+  if(p==="sol"){loadSheet("Solicitudes",function(d){solicitudes=d;renderSol();});}
   if(p==="usu"){loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});}
   if(p==="catadmin"){renderCatAdmin();}
   if(p==="prest"){loadPrest();}
   if(p==="est"){setDef();}
 }
 
-// STAB HELPERS
-function stabShow(prefix,tabs,active){
-  tabs.forEach(function(t){var el=document.getElementById(prefix+t);if(el)el.style.display="none";});
-  var el=document.getElementById(prefix+active);if(el)el.style.display="block";
-}
 function stabUsu(t){
-  stabShow("usu-",["lista","nuevo","excel"],t);
+  ["lista","nuevo","excel"].forEach(function(s){var el=document.getElementById("usu-"+s);if(el)el.style.display="none";});
+  var el=document.getElementById("usu-"+t);if(el)el.style.display="block";
   document.querySelectorAll("#page-usu .stab").forEach(function(b,i){b.classList.toggle("act",["lista","nuevo","excel"][i]===t);});
 }
 function stabCat(t){
-  stabShow("ca-",["lista","nuevo","excel","borrar"],t);
+  ["lista","nuevo","excel","borrar"].forEach(function(s){var el=document.getElementById("ca-"+s);if(el)el.style.display="none";});
+  var el=document.getElementById("ca-"+t);if(el)el.style.display="block";
   document.querySelectorAll("#page-catadmin .stab").forEach(function(b,i){b.classList.toggle("act",["lista","nuevo","excel","borrar"][i]===t);});
 }
 function stabPr(t){
-  stabShow("pr-",["lista","nuevo","excel","sol"],t);
-  document.querySelectorAll("#page-prest .stab").forEach(function(b,i){b.classList.toggle("act",["lista","nuevo","excel","sol"][i]===t);});
-  if(t==="sol"){loadSheet("Solicitudes",function(d){solicitudes=d;renderSol();});}
+  ["lista","nuevo","excel"].forEach(function(s){var el=document.getElementById("pr-"+s);if(el)el.style.display="none";});
+  var el=document.getElementById("pr-"+t);if(el)el.style.display="block";
+  document.querySelectorAll("#page-prest .stab").forEach(function(b,i){b.classList.toggle("act",["lista","nuevo","excel"][i]===t);});
 }
 
 // CATÁLOGO
@@ -680,49 +705,56 @@ function loadCat(){
   document.getElementById("bgrid").innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;font-family:system-ui,sans-serif;color:#888"><div class="spin" style="margin:0 auto 12px"></div>Cargando catálogo...</div>';
   Promise.all([apiGet("Libros"),apiGet("Prestamos")])
     .then(function(res){
-      var dl=res[0];
-      var dp=res[1];
-      libros=Array.isArray(dl)?dl.filter(function(b){return b&&(b["Código"]||b["Título"]);}):[];
-      prestamos=Array.isArray(dp)?dp:[];
-      fillFiltros();
-      renderCat();
+      libros=Array.isArray(res[0])?res[0].filter(function(b){return b&&(b["Código"]||b["Título"]);}):[];
+      prestamos=Array.isArray(res[1])?res[1]:[];
+      fillFiltros();renderCat();
     })
     .catch(function(err){
-      console.error("Error cargando catálogo:",err);
       document.getElementById("bgrid").innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:#c0392b;font-family:system-ui,sans-serif"><i class="ti ti-wifi-off" style="font-size:32px;display:block;margin-bottom:8px"></i>Error al conectar con Google Sheets.</div>';
     });
 }
 
 function getLoan(cod){
   var act=prestamos.filter(function(p){return String(p["CodigoLibro"]||"").trim()===String(cod).trim()&&!p["Devolucion"];});
-  return act.length?{plazo:act[0]["Plazo"]||""}:null;
+  if(!act.length)return null;
+  var plazo=act[0]["Plazo"]||"";
+  // Solo fecha, sin hora
+  if(plazo&&plazo.includes("T"))plazo=plazo.split("T")[0];
+  return{plazo:plazo,raw:act[0]};
 }
 
 function fillFiltros(){
   var t1s=[...new Set(libros.map(function(b){return b["Tema1"];}).filter(Boolean))].sort();
+  var ubics=[...new Set(libros.map(function(b){return b["Ubicación"];}).filter(Boolean))].sort();
   var ans=[...new Set(libros.map(function(b){return String(b["Año"]);}).filter(Boolean))].sort();
   var t1sel=document.getElementById("st1");
   t1sel.innerHTML='<option value="">Todos los temas</option>';
   t1s.forEach(function(t){t1sel.innerHTML+='<option>'+t+'</option>';});
+  var ubicsel=document.getElementById("subic");
+  ubicsel.innerHTML='<option value="">Todas las ubicaciones</option>';
+  ubics.forEach(function(u){ubicsel.innerHTML+='<option>'+u+'</option>';});
   var asel=document.getElementById("san");
   asel.innerHTML='<option value="">Cualquier año</option>';
   ans.forEach(function(a){asel.innerHTML+='<option>'+a+'</option>';});
 }
 
+function getIcono(tema){return TEMA_ICONS[tema]||"📖";}
+
 function renderCat(){
-  var q=(document.getElementById("sq").value||"").toLowerCase();
+  var q=norm(document.getElementById("sq").value||"");
   var t1=document.getElementById("st1").value;
+  var ubic=document.getElementById("subic").value;
   var an=document.getElementById("san").value;
   var di=document.getElementById("sdi").value;
   var filtered=libros.filter(function(b){
-    var loan=getLoan(b["Código"]);
-    var ip=!!loan;
+    var loan=getLoan(b["Código"]);var ip=!!loan;
     if(di==="d"&&ip)return false;
     if(di==="p"&&!ip)return false;
     if(t1&&b["Tema1"]!==t1)return false;
+    if(ubic&&b["Ubicación"]!==ubic)return false;
     if(an&&String(b["Año"])!==an)return false;
     if(q){
-      var hay=["Título","Autor","Tema1","Tema2","Ubicación","Año","Código"].some(function(k){return(b[k]||"").toString().toLowerCase().includes(q);});
+      var hay=["Título","Autor","Tema1","Tema2","Ubicación","Año","Código"].some(function(k){return norm(b[k]).includes(q);});
       if(!hay)return false;
     }
     return true;
@@ -738,21 +770,23 @@ function renderCat(){
     var loan=getLoan(b["Código"]);var ip=!!loan;
     var card=document.createElement("div");
     card.className="bcard"+(ip?" prest":"");
-    var tms=(b["Tema2"]||"").split(";").filter(Boolean);
-    var covHtml=b["Portada"]?'<img src="'+b["Portada"]+'" alt="" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'"><span class="nocover" style="display:none">📖</span>':'<span class="nocover">📖</span>';
-    var t1Html=b["Tema1"]?'<span class="btema">'+b["Tema1"]+'</span>':"";
-    var t2Html=tms.map(function(t){return'<span class="btema" style="background:var(--magl);color:var(--magd)">'+t.trim()+'</span>';}).join("");
+    var icono=getIcono(b["Tema1"]);
+    var covHtml=b["Portada"]
+      ?'<img src="'+b["Portada"]+'" alt="" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'"><span style="display:none;font-size:52px">'+icono+'</span>'
+      :'<span style="font-size:52px">'+icono+'</span>';
+    var bgColor=ip?"linear-gradient(135deg,#fff0f0,#ffe0e0)":"linear-gradient(135deg,var(--magl),var(--cyal))";
+    var t1Html=b["Tema1"]?'<span class="btema">'+icono+' '+b["Tema1"]+'</span>':"";
     var piHtml=ip?'<div class="bpinfo">📅 Prestado hasta: '+(loan.plazo||"—")+'</div>':"";
-    var dgHtml=b["Digital"]?'<a class="bsm bdgbtn" href="'+b["Digital"]+'" target="_blank"><i class="ti ti-world"></i></a>':"";
-    card.innerHTML='<div class="bcov">'+covHtml+'<span class="ebadge '+(ip?"eprest":"edisp")+'">'+(ip?"Prestado":"Disponible")+'</span></div>'
+    var dgHtml=b["Digital"]?'<a class="bsm bdgbtn btn-dig" href="'+b["Digital"]+'" target="_blank"><i class="ti ti-world"></i> Digital</a>':"";
+    card.innerHTML='<div class="bcov" style="background:'+bgColor+'">'+covHtml+'<span class="ebadge '+(ip?"eprest":"edisp")+'">'+(ip?"Prestado":"Disponible")+'</span></div>'
       +'<div class="bbody">'
       +'<div class="bcod">'+(b["Código"]||"")+'</div>'
       +'<div class="btit">'+(b["Título"]||"Sin título")+'</div>'
       +'<div class="baut">'+(b["Autor"]||"(sin autor)")+'</div>'
-      +t1Html+t2Html+piHtml
+      +(b["Ubicación"]?'<div class="bubic"><i class="ti ti-map-pin" style="font-size:11px"></i> '+(b["Ubicación"]||"")+'</div>':"")
+      +t1Html+piHtml
       +'<div class="bacts">'
       +'<button class="bsm bpbtn btn-sol"'+(ip?" disabled":"")+'><i class="ti ti-book"></i> Solicito préstamo</button>'
-      +'<button class="bsm bcpbtn btn-cop"><i class="ti ti-copy"></i></button>'
       +dgHtml
       +'</div>'
       +'<div class="aacts">'
@@ -760,23 +794,64 @@ function renderCat(){
       +'<button class="bsm bdbtn btn-del"><i class="ti ti-trash"></i></button>'
       +'</div>'
       +'</div>';
+    // Click en la tarjeta abre detalle (excepto botones)
+    card.addEventListener("click",function(e){
+      if(!e.target.closest("button")&&!e.target.closest("a"))openDet(b);
+    });
     var btnSol=card.querySelector(".btn-sol");
-    if(btnSol&&!ip)btnSol.addEventListener("click",function(){openSol(b);});
-    card.querySelector(".btn-cop").addEventListener("click",function(){copReg(b["Código"]||"",b["Título"]||"",b["Autor"]||"");});
+    if(btnSol&&!ip)btnSol.addEventListener("click",function(e){e.stopPropagation();openSol(b);});
     var btnEdit=card.querySelector(".btn-edit");
-    if(btnEdit)btnEdit.addEventListener("click",function(){openELib(b);});
+    if(btnEdit)btnEdit.addEventListener("click",function(e){e.stopPropagation();openELib(b);});
     var btnDel=card.querySelector(".btn-del");
-    if(btnDel)btnDel.addEventListener("click",function(){delLib(b._row);});
+    if(btnDel)btnDel.addEventListener("click",function(e){e.stopPropagation();delLib(b._row);});
     grid.appendChild(card);
   });
 }
 
-function copReg(cod,tit,aut){
-  var txt="Código: "+cod+"\nTítulo: "+tit+"\nAutor: "+aut;
-  if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){alert("¡Registro copiado!");}).catch(function(){prompt("Copia este texto:",txt);});}
-  else{prompt("Copia este texto:",txt);}
+// DETALLE LIBRO
+function openDet(b){
+  detLib=b;
+  var loan=getLoan(b["Código"]);var ip=!!loan;
+  var icono=getIcono(b["Tema1"]);
+  document.getElementById("det-titulo").textContent=b["Título"]||"Detalle del libro";
+  var covDiv=document.getElementById("det-cover");
+  if(b["Portada"]){
+    covDiv.innerHTML='<img src="'+b["Portada"]+'" alt="" onerror="this.style.display=\'none\'" style="width:100%;height:100%;object-fit:cover">';
+  }else{
+    covDiv.innerHTML='<span style="font-size:70px">'+icono+'</span>';
+    covDiv.style.background=ip?"linear-gradient(135deg,#fff0f0,#ffe0e0)":"linear-gradient(135deg,var(--magl),var(--cyal))";
+  }
+  var campos=[
+    ["Código",b["Código"]||"—"],["Autor",b["Autor"]||"—"],["Editorial",b["Editorial"]||"—"],
+    ["Año",b["Año"]||"—"],["Páginas",b["Páginas"]||"—"],["Tema 1",(b["Tema1"]?icono+" "+b["Tema1"]:"—")],
+    ["Tema 2",b["Tema2"]||"—"],["Ubicación",b["Ubicación"]||"—"],
+    ["Estado",ip?'<span style="color:#c0392b;font-weight:700">📅 Prestado hasta: '+(loan.plazo||"—")+'</span>':'<span style="color:#27ae60;font-weight:700">✅ Disponible</span>']
+  ];
+  document.getElementById("det-rows").innerHTML=campos.map(function(c){
+    return'<div class="det-row"><span class="det-k">'+c[0]+'</span><span class="det-v">'+c[1]+'</span></div>';
+  }).join("");
+  var foot=document.getElementById("det-foot");
+  foot.innerHTML="";
+  if(!ip){
+    var btnS=document.createElement("button");
+    btnS.className="bmain";btnS.innerHTML='<i class="ti ti-book"></i> Solicito préstamo';
+    btnS.addEventListener("click",function(){closeMod("mdet");openSol(b);});
+    foot.appendChild(btnS);
+  }
+  if(b["Digital"]){
+    var btnD=document.createElement("a");
+    btnD.className="bsec";btnD.href=b["Digital"];btnD.target="_blank";
+    btnD.innerHTML='<i class="ti ti-world"></i> Ver digital';
+    foot.appendChild(btnD);
+  }
+  var btnC=document.createElement("button");
+  btnC.className="bsec";btnC.innerHTML='<i class="ti ti-x"></i> Cerrar';
+  btnC.addEventListener("click",function(){closeMod("mdet");});
+  foot.appendChild(btnC);
+  document.getElementById("mdet").classList.add("open");
 }
 
+// SOLICITUD
 function openSol(b){
   solLib=b;
   document.getElementById("solinf").innerHTML="<strong>"+(b["Título"]||"")+"</strong><br>Código: "+(b["Código"]||"")+" · Autor: "+(b["Autor"]||"—");
@@ -784,7 +859,6 @@ function openSol(b){
   document.getElementById("solok").classList.remove("show");document.getElementById("solerr").classList.remove("show");
   document.getElementById("msol").classList.add("open");
 }
-
 function envSol(){
   var nom=document.getElementById("solnom").value.trim();
   var cel=document.getElementById("solcel").value.trim();
@@ -798,240 +872,11 @@ function envSol(){
       setTimeout(function(){closeMod("msol");},3000);
     })
     .catch(function(){
-      hideLd();
-      document.getElementById("solerrtxt").textContent="Error al enviar.";
-      document.getElementById("solerr").classList.add("show");
+      hideLd();document.getElementById("solerrtxt").textContent="Error al enviar.";document.getElementById("solerr").classList.add("show");
     });
 }
 
-// USUARIOS
-function renderUsu(){
-  var q=(document.getElementById("usuq")?.value||"").toLowerCase();
-  var filtered=usuarios.filter(function(u){return !q||["ID","Nombre","Celular","Distrito"].some(function(k){return(u[k]||"").toString().toLowerCase().includes(q);});});
-  var tb=document.getElementById("usutb");tb.innerHTML="";
-  filtered.forEach(function(u){
-    var tr=document.createElement("tr");
-    tr.innerHTML="<td>"+(u["ID"]||"")+"</td><td>"+(u["Nombre"]||"")+"</td><td>"+(u["Sexo"]||"")+"</td><td>"+(u["Nacimiento"]||"")+"</td><td>"+(u["Dirección"]||"")+"</td><td>"+(u["Distrito"]||"")+"</td><td>"+(u["Celular"]||"")+"</td><td>"+(u["Ref1"]||"")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
-    tr.querySelector(".bebtn").addEventListener("click",function(){openEUsu(u);});
-    tr.querySelector(".bdbtn").addEventListener("click",function(){delUsu(u._row);});
-    tb.appendChild(tr);
-  });
-}
-
-function addUsu(){
-  var id=document.getElementById("uid").value.trim(),nom=document.getElementById("unom").value.trim(),sexo=document.getElementById("usexo").value;
-  if(!id||!nom||!sexo){alert("ID, Nombre y Sexo son obligatorios.");return;}
-  showLd("Guardando...");
-  apiPost({action:"add",sheet:"Usuarios",row:[id,nom,sexo,document.getElementById("unac").value,document.getElementById("udir").value,document.getElementById("udist").value,document.getElementById("ucel").value,document.getElementById("uref1").value,document.getElementById("uref2").value,document.getElementById("uref3").value]})
-    .then(function(){
-      hideLd();
-      document.getElementById("uoktxt").textContent="Usuario "+nom+" guardado.";
-      document.getElementById("uok").classList.add("show");
-      setTimeout(function(){document.getElementById("uok").classList.remove("show");},3000);
-      ["uid","unom","unac","udir","udist","ucel","uref1","uref2","uref3"].forEach(function(i){document.getElementById(i).value="";});
-      document.getElementById("usexo").selectedIndex=0;
-      loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});
-    })
-    .catch(function(){
-      hideLd();
-      document.getElementById("uerrtxt").textContent="Error al guardar.";
-      document.getElementById("uerr").classList.add("show");
-      setTimeout(function(){document.getElementById("uerr").classList.remove("show");},3000);
-    });
-}
-
-function delUsu(row){
-  if(!confirm("¿Eliminar este usuario?"))return;
-  showLd("Eliminando...");
-  apiPost({action:"delete",sheet:"Usuarios",_row:row})
-    .then(function(){hideLd();loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});})
-    .catch(function(){hideLd();alert("Error.");});
-}
-
-function openEUsu(u){
-  editUsu=u;
-  document.getElementById("euid").value=u["ID"]||"";document.getElementById("eunom").value=u["Nombre"]||"";
-  document.getElementById("eusexo").value=u["Sexo"]||"Masculino";document.getElementById("eunac").value=u["Nacimiento"]||"";
-  document.getElementById("eudir").value=u["Dirección"]||"";document.getElementById("eudist").value=u["Distrito"]||"";
-  document.getElementById("eucel").value=u["Celular"]||"";document.getElementById("euref1").value=u["Ref1"]||"";
-  document.getElementById("euref2").value=u["Ref2"]||"";document.getElementById("euref3").value=u["Ref3"]||"";
-  document.getElementById("euok").classList.remove("show");document.getElementById("euerr").classList.remove("show");
-  document.getElementById("meusu").classList.add("open");
-}
-
-function saveUsu(){
-  if(!editUsu)return;
-  showLd("Guardando...");
-  apiPost({action:"edit",sheet:"Usuarios",_row:editUsu._row,row:[document.getElementById("euid").value,document.getElementById("eunom").value,document.getElementById("eusexo").value,document.getElementById("eunac").value,document.getElementById("eudir").value,document.getElementById("eudist").value,document.getElementById("eucel").value,document.getElementById("euref1").value,document.getElementById("euref2").value,document.getElementById("euref3").value]})
-    .then(function(){
-      hideLd();document.getElementById("euok").classList.add("show");
-      setTimeout(function(){closeMod("meusu");loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});},1500);
-    })
-    .catch(function(){hideLd();document.getElementById("euerr").classList.add("show");});
-}
-
-// CATALOGACIÓN ADMIN
-function renderCatAdmin(){
-  var q=(document.getElementById("caq")?.value||"").toLowerCase();
-  var filtered=libros.filter(function(b){return !q||["Código","Título","Autor","Tema1"].some(function(k){return(b[k]||"").toString().toLowerCase().includes(q);});});
-  var tb=document.getElementById("catb");tb.innerHTML="";
-  filtered.forEach(function(b){
-    var loan=getLoan(b["Código"]);
-    var tr=document.createElement("tr");
-    tr.innerHTML="<td>"+(b["Código"]||"")+"</td><td style='max-width:150px'>"+(b["Título"]||"")+"</td><td>"+(b["Autor"]||"")+"</td><td>"+(b["Editorial"]||"")+"</td><td>"+(b["Año"]||"")+"</td><td>"+(b["Tema1"]||"")+"</td><td>"+(b["Ubicación"]||"")+"</td><td>"+(loan?"<span style='color:#c0392b;font-weight:700'>Prestado</span>":"<span style='color:#27ae60;font-weight:700'>Disponible</span>")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
-    tr.querySelector(".bebtn").addEventListener("click",function(){openELib(b);});
-    tr.querySelector(".bdbtn").addEventListener("click",function(){delLib(b._row);});
-    tb.appendChild(tr);
-  });
-}
-
-function addLib(){
-  var cod=document.getElementById("lcod").value.trim(),tit=document.getElementById("ltit").value.trim();
-  if(!cod||!tit){alert("Código y Título son obligatorios.");return;}
-  showLd("Guardando libro...");
-  apiPost({action:"add",sheet:"Libros",row:[cod,tit,document.getElementById("laut").value,document.getElementById("ledit").value,document.getElementById("lanio").value,document.getElementById("lpags").value,document.getElementById("lt1").value,document.getElementById("lt2").value,document.getElementById("lubic").value,document.getElementById("lport").value,document.getElementById("ldig").value]})
-    .then(function(){
-      hideLd();
-      document.getElementById("loktxt").textContent='"'+tit+'" guardado.';
-      document.getElementById("lok").classList.add("show");
-      setTimeout(function(){document.getElementById("lok").classList.remove("show");},3000);
-      ["lcod","ltit","laut","ledit","lanio","lpags","lt1","lt2","lubic","lport","ldig"].forEach(function(i){document.getElementById(i).value="";});
-      loadCat();
-    })
-    .catch(function(){
-      hideLd();document.getElementById("lerrtxt").textContent="Error.";document.getElementById("lerr").classList.add("show");
-    });
-}
-
-function delLib(row){
-  if(!confirm("¿Eliminar este libro?"))return;
-  showLd("Eliminando...");
-  apiPost({action:"delete",sheet:"Libros",_row:row})
-    .then(function(){hideLd();loadCat();renderCatAdmin();})
-    .catch(function(){hideLd();alert("Error.");});
-}
-
-function openELib(b){
-  editLib=b;
-  document.getElementById("elcod").value=b["Código"]||"";document.getElementById("eltit").value=b["Título"]||"";
-  document.getElementById("elaut").value=b["Autor"]||"";document.getElementById("eledit").value=b["Editorial"]||"";
-  document.getElementById("elanio").value=b["Año"]||"";document.getElementById("elpags").value=b["Páginas"]||"";
-  document.getElementById("elt1").value=b["Tema1"]||"";document.getElementById("elt2").value=b["Tema2"]||"";
-  document.getElementById("elubic").value=b["Ubicación"]||"";document.getElementById("elport").value=b["Portada"]||"";
-  document.getElementById("eldig").value=b["Digital"]||"";
-  document.getElementById("elok").classList.remove("show");document.getElementById("elerr").classList.remove("show");
-  document.getElementById("melib").classList.add("open");
-}
-
-function saveLib(){
-  if(!editLib)return;
-  showLd("Guardando...");
-  apiPost({action:"edit",sheet:"Libros",_row:editLib._row,row:[document.getElementById("elcod").value,document.getElementById("eltit").value,document.getElementById("elaut").value,document.getElementById("eledit").value,document.getElementById("elanio").value,document.getElementById("elpags").value,document.getElementById("elt1").value,document.getElementById("elt2").value,document.getElementById("elubic").value,document.getElementById("elport").value,document.getElementById("eldig").value]})
-    .then(function(){
-      hideLd();document.getElementById("elok").classList.add("show");
-      setTimeout(function(){closeMod("melib");loadCat();renderCatAdmin();},1500);
-    })
-    .catch(function(){
-      hideLd();document.getElementById("elerrtxt").textContent="Error.";document.getElementById("elerr").classList.add("show");
-    });
-}
-
-function delRange(){
-  var from=parseInt(document.getElementById("delfrom").value);
-  var to=parseInt(document.getElementById("delto").value);
-  if(!from||!to||from>to){alert("Rango inválido.");return;}
-  if(!confirm("¿Eliminar filas "+from+" a "+to+"?"))return;
-  showLd("Eliminando...");
-  apiPost({action:"deleteRange",sheet:"Libros",from:from,to:to})
-    .then(function(){hideLd();document.getElementById("delok").classList.add("show");setTimeout(function(){document.getElementById("delok").classList.remove("show");},3000);loadCat();})
-    .catch(function(){hideLd();document.getElementById("delerrtxt").textContent="Error.";document.getElementById("delerr").classList.add("show");});
-}
-
-function delAll(){
-  showLd("Borrando...");
-  apiGet("Libros").then(function(data){
-    if(Array.isArray(data)&&data.length>0){
-      return apiPost({action:"deleteRange",sheet:"Libros",from:2,to:data[data.length-1]._row});
-    }
-  }).then(function(){hideLd();alert("Base borrada.");loadCat();})
-  .catch(function(){hideLd();alert("Error.");});
-}
-
-// PRÉSTAMOS
-function loadPrest(){
-  showLd("Cargando...");
-  apiGet("Prestamos").then(function(d){prestamos=Array.isArray(d)?d:[];hideLd();renderPrest();}).catch(function(){hideLd();});
-}
-
-function renderPrest(){
-  var tb=document.getElementById("prestb");tb.innerHTML="";
-  prestamos.forEach(function(p){
-    var tr=document.createElement("tr");
-    tr.innerHTML="<td>"+(p["Fecha"]||"")+"</td><td>"+(p["Lugar"]||"")+"</td><td>"+(p["IDUsuario"]||"")+"</td><td>"+(p["CodigoLibro"]||"")+"</td><td style='max-width:130px'>"+(p["Titulo"]||"")+"</td><td>"+(p["Autor"]||"")+"</td><td>"+(p["Plazo"]||"")+"</td><td>"+(p["Devolucion"]||"")+"</td><td>"+(p["Nota"]||"")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
-    tr.querySelector(".bebtn").addEventListener("click",function(){openEPrest(p);});
-    tr.querySelector(".bdbtn").addEventListener("click",function(){delPrest(p._row);});
-    tb.appendChild(tr);
-  });
-}
-
-function fillLib(){
-  var cod=document.getElementById("pcod").value.trim();
-  var lib=libros.find(function(b){return(b["Código"]||"").trim()===cod;});
-  document.getElementById("ptit").value=lib?lib["Título"]||"":"";
-  document.getElementById("paut").value=lib?lib["Autor"]||"":"";
-}
-
-function fillUsu(){
-  var uid=document.getElementById("puid").value.trim();
-  var u=usuarios.find(function(x){return(x["ID"]||"").trim()===uid;});
-  document.getElementById("punom").value=u?u["Nombre"]||"":"";
-}
-
-function addPrest(){
-  var fecha=document.getElementById("pfecha").value,uid=document.getElementById("puid").value.trim(),cod=document.getElementById("pcod").value.trim(),plazo=document.getElementById("pplazo").value;
-  if(!fecha||!uid||!cod||!plazo){alert("Fecha, ID usuario, código y plazo son obligatorios.");return;}
-  showLd("Registrando...");
-  apiPost({action:"add",sheet:"Prestamos",row:[fecha,document.getElementById("plugar").value,uid,cod,document.getElementById("ptit").value,document.getElementById("paut").value,plazo,document.getElementById("pdevol").value,document.getElementById("pnota").value]})
-    .then(function(){
-      hideLd();document.getElementById("poktxt").textContent="Préstamo registrado.";document.getElementById("pok").classList.add("show");
-      setTimeout(function(){document.getElementById("pok").classList.remove("show");},3000);
-      ["pfecha","plugar","puid","punom","pcod","ptit","paut","pplazo","pdevol","pnota"].forEach(function(i){var el=document.getElementById(i);if(el)el.value="";});
-      loadPrest();loadCat();
-    })
-    .catch(function(){hideLd();document.getElementById("perrtxt").textContent="Error.";document.getElementById("perr").classList.add("show");});
-}
-
-function delPrest(row){
-  if(!confirm("¿Eliminar este préstamo?"))return;
-  showLd("Eliminando...");
-  apiPost({action:"delete",sheet:"Prestamos",_row:row})
-    .then(function(){hideLd();loadPrest();loadCat();})
-    .catch(function(){hideLd();alert("Error.");});
-}
-
-function openEPrest(p){
-  editPrest=p;
-  document.getElementById("epfecha").value=p["Fecha"]||"";document.getElementById("eplugar").value=p["Lugar"]||"";
-  document.getElementById("epuid").value=p["IDUsuario"]||"";document.getElementById("epcod").value=p["CodigoLibro"]||"";
-  document.getElementById("eptit").value=p["Titulo"]||"";document.getElementById("epaut").value=p["Autor"]||"";
-  document.getElementById("epplazo").value=p["Plazo"]||"";document.getElementById("epdevol").value=p["Devolucion"]||"";
-  document.getElementById("epnota").value=p["Nota"]||"";
-  document.getElementById("epok").classList.remove("show");document.getElementById("eperr").classList.remove("show");
-  document.getElementById("meprest").classList.add("open");
-}
-
-function savePrest(){
-  if(!editPrest)return;
-  showLd("Guardando...");
-  apiPost({action:"edit",sheet:"Prestamos",_row:editPrest._row,row:[document.getElementById("epfecha").value,document.getElementById("eplugar").value,document.getElementById("epuid").value,document.getElementById("epcod").value,document.getElementById("eptit").value,document.getElementById("epaut").value,document.getElementById("epplazo").value,document.getElementById("epdevol").value,document.getElementById("epnota").value]})
-    .then(function(){
-      hideLd();document.getElementById("epok").classList.add("show");
-      setTimeout(function(){closeMod("meprest");loadPrest();loadCat();},1500);
-    })
-    .catch(function(){hideLd();document.getElementById("eperr").classList.add("show");});
-}
-
-// SOLICITUDES
+// SOLICITUDES (admin)
 function renderSol(){
   var tb=document.getElementById("soltb");tb.innerHTML="";
   solicitudes.forEach(function(s){
@@ -1043,13 +888,204 @@ function renderSol(){
   });
 }
 
+// USUARIOS
+function renderUsu(){
+  var q=norm(document.getElementById("usuq")?.value||"");
+  var filtered=usuarios.filter(function(u){return !q||["ID","Nombre","Celular","Distrito"].some(function(k){return norm(u[k]).includes(q);});});
+  var tb=document.getElementById("usutb");tb.innerHTML="";
+  filtered.forEach(function(u){
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+(u["ID"]||"")+"</td><td>"+(u["Nombre"]||"")+"</td><td>"+(u["Sexo"]||"")+"</td><td>"+(u["Nacimiento"]||"")+"</td><td>"+(u["Dirección"]||"")+"</td><td>"+(u["Distrito"]||"")+"</td><td>"+(u["Celular"]||"")+"</td><td>"+(u["Ref1"]||"")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
+    tr.querySelector(".bebtn").addEventListener("click",function(){openEUsu(u);});
+    tr.querySelector(".bdbtn").addEventListener("click",function(){delUsu(u._row);});
+    tb.appendChild(tr);
+  });
+}
+function addUsu(){
+  var id=document.getElementById("uid").value.trim(),nom=document.getElementById("unom").value.trim(),sexo=document.getElementById("usexo").value;
+  if(!id||!nom||!sexo){alert("ID, Nombre y Sexo son obligatorios.");return;}
+  showLd("Guardando...");
+  apiPost({action:"add",sheet:"Usuarios",row:[id,nom,sexo,document.getElementById("unac").value,document.getElementById("udir").value,document.getElementById("udist").value,document.getElementById("ucel").value,document.getElementById("uref1").value,document.getElementById("uref2").value,document.getElementById("uref3").value]})
+    .then(function(){
+      hideLd();document.getElementById("uoktxt").textContent="Usuario "+nom+" guardado.";document.getElementById("uok").classList.add("show");
+      setTimeout(function(){document.getElementById("uok").classList.remove("show");},3000);
+      ["uid","unom","unac","udir","udist","ucel","uref1","uref2","uref3"].forEach(function(i){document.getElementById(i).value="";});
+      document.getElementById("usexo").selectedIndex=0;
+      loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});
+    })
+    .catch(function(){hideLd();document.getElementById("uerrtxt").textContent="Error.";document.getElementById("uerr").classList.add("show");setTimeout(function(){document.getElementById("uerr").classList.remove("show");},3000);});
+}
+function delUsu(row){
+  if(!confirm("¿Eliminar este usuario?"))return;
+  showLd("Eliminando...");
+  apiPost({action:"delete",sheet:"Usuarios",_row:row}).then(function(){hideLd();loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});}).catch(function(){hideLd();alert("Error.");});
+}
+function openEUsu(u){
+  editUsu=u;
+  document.getElementById("euid").value=u["ID"]||"";document.getElementById("eunom").value=u["Nombre"]||"";
+  document.getElementById("eusexo").value=u["Sexo"]||"Masculino";document.getElementById("eunac").value=u["Nacimiento"]||"";
+  document.getElementById("eudir").value=u["Dirección"]||"";document.getElementById("eudist").value=u["Distrito"]||"";
+  document.getElementById("eucel").value=u["Celular"]||"";document.getElementById("euref1").value=u["Ref1"]||"";
+  document.getElementById("euref2").value=u["Ref2"]||"";document.getElementById("euref3").value=u["Ref3"]||"";
+  document.getElementById("euok").classList.remove("show");document.getElementById("euerr").classList.remove("show");
+  document.getElementById("meusu").classList.add("open");
+}
+function saveUsu(){
+  if(!editUsu)return;showLd("Guardando...");
+  apiPost({action:"edit",sheet:"Usuarios",_row:editUsu._row,row:[document.getElementById("euid").value,document.getElementById("eunom").value,document.getElementById("eusexo").value,document.getElementById("eunac").value,document.getElementById("eudir").value,document.getElementById("eudist").value,document.getElementById("eucel").value,document.getElementById("euref1").value,document.getElementById("euref2").value,document.getElementById("euref3").value]})
+    .then(function(){hideLd();document.getElementById("euok").classList.add("show");setTimeout(function(){closeMod("meusu");loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});},1500);})
+    .catch(function(){hideLd();document.getElementById("euerr").classList.add("show");});
+}
+
+// CATALOGACIÓN ADMIN
+function renderCatAdmin(){
+  var q=norm(document.getElementById("caq")?.value||"");
+  var filtered=libros.filter(function(b){return !q||["Código","Título","Autor","Tema1"].some(function(k){return norm(b[k]).includes(q);});});
+  var tb=document.getElementById("catb");tb.innerHTML="";
+  filtered.forEach(function(b){
+    var loan=getLoan(b["Código"]);
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+(b["Código"]||"")+"</td><td style='max-width:150px'>"+(b["Título"]||"")+"</td><td>"+(b["Autor"]||"")+"</td><td>"+(b["Editorial"]||"")+"</td><td>"+(b["Año"]||"")+"</td><td>"+(getIcono(b["Tema1"]))+" "+(b["Tema1"]||"")+"</td><td>"+(b["Ubicación"]||"")+"</td><td>"+(loan?"<span style='color:#c0392b;font-weight:700'>Prestado</span>":"<span style='color:#27ae60;font-weight:700'>Disponible</span>")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
+    tr.querySelector(".bebtn").addEventListener("click",function(){openELib(b);});
+    tr.querySelector(".bdbtn").addEventListener("click",function(){delLib(b._row);});
+    tb.appendChild(tr);
+  });
+}
+function addLib(){
+  var cod=document.getElementById("lcod").value.trim(),tit=document.getElementById("ltit").value.trim();
+  if(!cod||!tit){alert("Código y Título son obligatorios.");return;}
+  showLd("Guardando libro...");
+  apiPost({action:"add",sheet:"Libros",row:[cod,tit,document.getElementById("laut").value,document.getElementById("ledit").value,document.getElementById("lanio").value,document.getElementById("lpags").value,document.getElementById("lt1").value,document.getElementById("lt2").value,document.getElementById("lubic").value,document.getElementById("lport").value,document.getElementById("ldig").value]})
+    .then(function(){
+      hideLd();document.getElementById("loktxt").textContent='"'+tit+'" guardado.';document.getElementById("lok").classList.add("show");
+      setTimeout(function(){document.getElementById("lok").classList.remove("show");},3000);
+      ["lcod","ltit","laut","ledit","lanio","lpags","lt1","lt2","lubic","lport","ldig"].forEach(function(i){document.getElementById(i).value="";});
+      loadCat();
+    })
+    .catch(function(){hideLd();document.getElementById("lerrtxt").textContent="Error.";document.getElementById("lerr").classList.add("show");});
+}
+function delLib(row){
+  if(!confirm("¿Eliminar este libro?"))return;showLd("Eliminando...");
+  apiPost({action:"delete",sheet:"Libros",_row:row}).then(function(){hideLd();loadCat();renderCatAdmin();}).catch(function(){hideLd();alert("Error.");});
+}
+function openELib(b){
+  editLib=b;
+  document.getElementById("elcod").value=b["Código"]||"";document.getElementById("eltit").value=b["Título"]||"";
+  document.getElementById("elaut").value=b["Autor"]||"";document.getElementById("eledit").value=b["Editorial"]||"";
+  document.getElementById("elanio").value=b["Año"]||"";document.getElementById("elpags").value=b["Páginas"]||"";
+  document.getElementById("elt1").value=b["Tema1"]||"";document.getElementById("elt2").value=b["Tema2"]||"";
+  document.getElementById("elubic").value=b["Ubicación"]||"";document.getElementById("elport").value=b["Portada"]||"";
+  document.getElementById("eldig").value=b["Digital"]||"";
+  document.getElementById("elok").classList.remove("show");document.getElementById("elerr").classList.remove("show");
+  document.getElementById("melib").classList.add("open");
+}
+function saveLib(){
+  if(!editLib)return;showLd("Guardando...");
+  apiPost({action:"edit",sheet:"Libros",_row:editLib._row,row:[document.getElementById("elcod").value,document.getElementById("eltit").value,document.getElementById("elaut").value,document.getElementById("eledit").value,document.getElementById("elanio").value,document.getElementById("elpags").value,document.getElementById("elt1").value,document.getElementById("elt2").value,document.getElementById("elubic").value,document.getElementById("elport").value,document.getElementById("eldig").value]})
+    .then(function(){hideLd();document.getElementById("elok").classList.add("show");setTimeout(function(){closeMod("melib");loadCat();renderCatAdmin();},1500);})
+    .catch(function(){hideLd();document.getElementById("elerrtxt").textContent="Error.";document.getElementById("elerr").classList.add("show");});
+}
+function delRange(){
+  var from=parseInt(document.getElementById("delfrom").value);var to=parseInt(document.getElementById("delto").value);
+  if(!from||!to||from>to){alert("Rango inválido.");return;}
+  if(!confirm("¿Eliminar filas "+from+" a "+to+"?"))return;
+  showLd("Eliminando...");
+  apiPost({action:"deleteRange",sheet:"Libros",from:from,to:to})
+    .then(function(){hideLd();document.getElementById("delok").classList.add("show");setTimeout(function(){document.getElementById("delok").classList.remove("show");},3000);loadCat();})
+    .catch(function(){hideLd();document.getElementById("delerrtxt").textContent="Error.";document.getElementById("delerr").classList.add("show");});
+}
+function delAll(){
+  showLd("Borrando...");
+  apiGet("Libros").then(function(data){
+    if(Array.isArray(data)&&data.length>0)return apiPost({action:"deleteRange",sheet:"Libros",from:2,to:data[data.length-1]._row});
+  }).then(function(){hideLd();alert("Base borrada.");loadCat();}).catch(function(){hideLd();alert("Error.");});
+}
+
+// PRÉSTAMOS
+function loadPrest(){
+  showLd("Cargando...");
+  apiGet("Prestamos").then(function(d){prestamos=Array.isArray(d)?d:[];hideLd();renderPrest();}).catch(function(){hideLd();});
+}
+function renderPrest(){
+  var tb=document.getElementById("prestb");tb.innerHTML="";
+  prestamos.forEach(function(p){
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+(p["Fecha"]||"")+"</td><td>"+(p["Lugar"]||"")+"</td><td>"+(p["IDUsuario"]||"")+"</td><td>"+(p["NombreUsuario"]||"")+"</td><td>"+(p["CodigoLibro"]||"")+"</td><td style='max-width:130px'>"+(p["Titulo"]||"")+"</td><td>"+(p["Plazo"]||"")+"</td><td>"+(p["Devolucion"]||"")+"</td><td>"+(p["Nota"]||"")+"</td><td style='display:flex;gap:4px'><button class='bsm bebtn'><i class='ti ti-pencil'></i></button><button class='bsm bdbtn'><i class='ti ti-trash'></i></button></td>";
+    tr.querySelector(".bebtn").addEventListener("click",function(){openEPrest(p);});
+    tr.querySelector(".bdbtn").addEventListener("click",function(){delPrest(p._row);});
+    tb.appendChild(tr);
+  });
+}
+function fillLib(){
+  var cod=document.getElementById("pcod").value.trim();
+  var lib=libros.find(function(b){return norm(b["Código"]).trim()===norm(cod);});
+  document.getElementById("ptit").value=lib?lib["Título"]||"":"";
+  document.getElementById("paut").value=lib?lib["Autor"]||"":"";
+}
+function fillUsu(){
+  var uid=document.getElementById("puid").value.trim();
+  var u=usuarios.find(function(x){return norm(x["ID"]).trim()===norm(uid);});
+  document.getElementById("punom").value=u?u["Nombre"]||"":"";
+  document.getElementById("pusexo").value=u?u["Sexo"]||"":"";
+  document.getElementById("punac").value=u?u["Nacimiento"]||"":"";
+  document.getElementById("pudist").value=u?u["Distrito"]||"":"";
+  document.getElementById("pucel").value=u?u["Celular"]||"":"";
+}
+function addPrest(){
+  var fecha=document.getElementById("pfecha").value,uid=document.getElementById("puid").value.trim(),cod=document.getElementById("pcod").value.trim(),plazo=document.getElementById("pplazo").value;
+  if(!fecha||!uid||!cod||!plazo){alert("Fecha, ID usuario, código y plazo son obligatorios.");return;}
+  showLd("Registrando...");
+  apiPost({action:"add",sheet:"Prestamos",row:[
+    fecha,
+    document.getElementById("plugar").value,
+    uid,
+    document.getElementById("punom").value,
+    document.getElementById("pusexo").value,
+    document.getElementById("punac").value,
+    document.getElementById("pudist").value,
+    document.getElementById("pucel").value,
+    cod,
+    document.getElementById("ptit").value,
+    document.getElementById("paut").value,
+    plazo,
+    document.getElementById("pdevol").value,
+    document.getElementById("pnota").value
+  ]})
+    .then(function(){
+      hideLd();document.getElementById("poktxt").textContent="Préstamo registrado.";document.getElementById("pok").classList.add("show");
+      setTimeout(function(){document.getElementById("pok").classList.remove("show");},3000);
+      ["pfecha","plugar","puid","punom","pusexo","punac","pudist","pucel","pcod","ptit","paut","pplazo","pdevol","pnota"].forEach(function(i){var el=document.getElementById(i);if(el)el.value="";});
+      loadPrest();loadCat();
+    })
+    .catch(function(){hideLd();document.getElementById("perrtxt").textContent="Error.";document.getElementById("perr").classList.add("show");});
+}
+function delPrest(row){
+  if(!confirm("¿Eliminar este préstamo?"))return;showLd("Eliminando...");
+  apiPost({action:"delete",sheet:"Prestamos",_row:row}).then(function(){hideLd();loadPrest();loadCat();}).catch(function(){hideLd();alert("Error.");});
+}
+function openEPrest(p){
+  editPrest=p;
+  document.getElementById("epfecha").value=p["Fecha"]||"";document.getElementById("eplugar").value=p["Lugar"]||"";
+  document.getElementById("epuid").value=p["IDUsuario"]||"";document.getElementById("epunom").value=p["NombreUsuario"]||"";
+  document.getElementById("epcod").value=p["CodigoLibro"]||"";document.getElementById("eptit").value=p["Titulo"]||"";
+  document.getElementById("epaut").value=p["Autor"]||"";document.getElementById("epplazo").value=p["Plazo"]||"";
+  document.getElementById("epdevol").value=p["Devolucion"]||"";document.getElementById("epnota").value=p["Nota"]||"";
+  document.getElementById("epok").classList.remove("show");document.getElementById("eperr").classList.remove("show");
+  document.getElementById("meprest").classList.add("open");
+}
+function savePrest(){
+  if(!editPrest)return;showLd("Guardando...");
+  apiPost({action:"edit",sheet:"Prestamos",_row:editPrest._row,row:[document.getElementById("epfecha").value,document.getElementById("eplugar").value,document.getElementById("epuid").value,document.getElementById("epunom").value,"","","","",document.getElementById("epcod").value,document.getElementById("eptit").value,document.getElementById("epaut").value,document.getElementById("epplazo").value,document.getElementById("epdevol").value,document.getElementById("epnota").value]})
+    .then(function(){hideLd();document.getElementById("epok").classList.add("show");setTimeout(function(){closeMod("meprest");loadPrest();loadCat();},1500);})
+    .catch(function(){hideLd();document.getElementById("eperr").classList.add("show");});
+}
+
 // ESTADÍSTICAS
 function setDef(){
   var h=new Date(),d=new Date();d.setMonth(d.getMonth()-3);
   document.getElementById("esd").value=d.toISOString().split("T")[0];
   document.getElementById("esh").value=h.toISOString().split("T")[0];
 }
-
 function genEst(){
   var desde=new Date(document.getElementById("esd").value);
   var hasta=new Date(document.getElementById("esh").value);hasta.setHours(23,59,59);
@@ -1069,16 +1105,21 @@ function genEst(){
       +'<div class="scard"><div class="sv">'+act+'</div><div class="sl">Activos</div></div>'
       +'<div class="scard" style="border-color:var(--cya)"><div class="sv" style="color:var(--cyad)">'+libros.length+'</div><div class="sl">Total libros</div></div>'
       +'<div class="scard" style="border-color:var(--vio)"><div class="sv" style="color:var(--vio)">'+usus.length+'</div><div class="sl">Usuarios registrados</div></div>';
+    // Libros más prestados
     var lc={};pf.forEach(function(p){var k=(p["CodigoLibro"]||"")+"||"+(p["Titulo"]||"");lc[k]=(lc[k]||0)+1;});
-    var tl=Object.entries(lc).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
-    var ml=tl[0]?tl[0][1]:1;
+    var tl=Object.entries(lc).sort(function(a,b){return b[1]-a[1];}).slice(0,8);var ml=tl[0]?tl[0][1]:1;
     document.getElementById("estlchart").innerHTML=tl.length?tl.map(function(e){var p=e[0].split("||");return'<div class="cbar"><div class="cbl">'+(p[1]||p[0])+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/ml*100)+'%">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos.</p>";
+    // Por lugar
     var lgc={};pf.forEach(function(p){var l=p["Lugar"]||"Sin lugar";lgc[l]=(lgc[l]||0)+1;});
     var tlg=Object.entries(lgc).sort(function(a,b){return b[1]-a[1];});var mlg=tlg[0]?tlg[0][1]:1;
     document.getElementById("estlugchart").innerHTML=tlg.length?tlg.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/mlg*100)+'%;background:linear-gradient(90deg,var(--cyad),var(--vio))">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos.</p>";
-    var up=pf.map(function(p){return usus.find(function(u){return(u["ID"]||"").trim()===(p["IDUsuario"]||"").trim();});}).filter(Boolean);
+    // Perfil usuarios — usar datos del préstamo directamente
     var sx={};var dc={};var ages=[];
-    up.forEach(function(u){var s=u["Sexo"]||"No esp.";sx[s]=(sx[s]||0)+1;var d=u["Distrito"]||"No esp.";dc[d]=(dc[d]||0)+1;if(u["Nacimiento"]){var a=new Date().getFullYear()-new Date(u["Nacimiento"]).getFullYear();if(a>0&&a<120)ages.push(a);}});
+    pf.forEach(function(p){
+      var s=p["Sexo"]||"No esp.";sx[s]=(sx[s]||0)+1;
+      var d=p["Distrito"]||"No esp.";dc[d]=(dc[d]||0)+1;
+      if(p["Nacimiento"]){var a=new Date().getFullYear()-new Date(p["Nacimiento"]).getFullYear();if(a>0&&a<120)ages.push(a);}
+    });
     var pa=ages.length?Math.round(ages.reduce(function(a,b){return a+b;},0)/ages.length):null;
     var msx=Math.max.apply(null,Object.values(sx).concat([1]));
     var tdc=Object.entries(dc).sort(function(a,b){return b[1]-a[1];}).slice(0,5);var mdc=tdc[0]?tdc[0][1]:1;
@@ -1093,145 +1134,87 @@ function genEst(){
 }
 
 // EXCEL
+var prevIds={
+  usu:{phd:"uphd",ptb:"uptb",cnt:"uimpcnt",prev:"uprev",btn:"uimpbtn",ok:"uimpok",okt:"uimptxt",file:"ufile"},
+  lib:{phd:"lphd",ptb:"lptb",cnt:"limpcnt",prev:"lprev",btn:"limpbtn",ok:"limpok",okt:"limptxt",file:"lfile"},
+  prest:{phd:"prphd",ptb:"prptb",cnt:"primpcnt",prev:"prprev",btn:"primpbtn",ok:"primpok",okt:"primptxt",file:"prfile"}
+};
 function dov(e,id){e.preventDefault();document.getElementById(id).classList.add("over");}
 function dlv(id){document.getElementById(id).classList.remove("over");}
 function ddrop(e,mod){e.preventDefault();dlv(mod==="usu"?"udz":mod==="lib"?"ldz":"prdz");var f=e.dataTransfer.files[0];if(f)procXL(f,mod);}
 function loadXL(e,mod){var f=e.target.files[0];if(f)procXL(f,mod);}
-
-var prevIds={usu:{phd:"uphd",ptb:"uptb",cnt:"uimpcnt",prev:"uprev",btn:"uimpbtn",ok:"uimpok",okt:"uimptxt",file:"ufile"},lib:{phd:"lphd",ptb:"lptb",cnt:"limpcnt",prev:"lprev",btn:"limpbtn",ok:"limpok",okt:"limptxt",file:"lfile"},prest:{phd:"prphd",ptb:"prptb",cnt:"primpcnt",prev:"prprev",btn:"primpbtn",ok:"primpok",okt:"primptxt",file:"prfile"}};
-
 function procXL(file,mod){
   if(typeof XLSX==="undefined"){alert("Librería no cargada.");return;}
   var reader=new FileReader();
   reader.onload=function(e){
-    try{
-      var wb=XLSX.read(e.target.result,{type:"array"});
-      var rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""});
-      if(!rows.length){alert("Archivo vacío.");return;}
-      prevs[mod]=rows;showPrev(mod,rows);
-    }catch(err){alert("Error al leer el archivo.");}
+    try{var wb=XLSX.read(e.target.result,{type:"array"});var rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""});if(!rows.length){alert("Archivo vacío.");return;}prevs[mod]=rows;showPrev(mod,rows);}
+    catch(err){alert("Error al leer.");}
   };
   reader.readAsArrayBuffer(file);
 }
-
 function showPrev(mod,rows){
   var ids=prevIds[mod];if(!ids)return;
   var cols=Object.keys(rows[0]);
   var phd=document.getElementById(ids.phd);if(phd)phd.innerHTML="<tr>"+cols.map(function(c){return"<th>"+c+"</th>";}).join("")+"</tr>";
   var ptb=document.getElementById(ids.ptb);
-  if(ptb){
-    ptb.innerHTML="";
-    rows.slice(0,5).forEach(function(r){
-      var tr=document.createElement("tr");
-      tr.innerHTML=cols.map(function(c){return"<td style='max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>"+(r[c]||"")+"</td>";}).join("");
-      ptb.appendChild(tr);
-    });
-    if(rows.length>5){var tr=document.createElement("tr");tr.innerHTML="<td colspan='"+cols.length+"' style='color:#888;font-style:italic'>... y "+(rows.length-5)+" más</td>";ptb.appendChild(tr);}
-  }
+  if(ptb){ptb.innerHTML="";rows.slice(0,5).forEach(function(r){var tr=document.createElement("tr");tr.innerHTML=cols.map(function(c){return"<td style='max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>"+(r[c]||"")+"</td>";}).join("");ptb.appendChild(tr);});if(rows.length>5){var tr=document.createElement("tr");tr.innerHTML="<td colspan='"+cols.length+"' style='color:#888;font-style:italic'>... y "+(rows.length-5)+" más</td>";ptb.appendChild(tr);}}
   var cnt=document.getElementById(ids.cnt);if(cnt)cnt.textContent=rows.length;
   var pv=document.getElementById(ids.prev);if(pv)pv.style.display="block";
 }
-
-function clrPrev(mod){
-  var ids=prevIds[mod];if(!ids)return;
-  prevs[mod]=null;
-  var pv=document.getElementById(ids.prev);if(pv)pv.style.display="none";
-  var fi=document.getElementById(ids.file);if(fi)fi.value="";
-}
-
+function clrPrev(mod){var ids=prevIds[mod];if(!ids)return;prevs[mod]=null;var pv=document.getElementById(ids.prev);if(pv)pv.style.display="none";var fi=document.getElementById(ids.file);if(fi)fi.value="";}
 function impData(mod){
   var rows=prevs[mod];if(!rows||!rows.length)return;
   var sm={usu:"Usuarios",lib:"Libros",prest:"Prestamos"};
   var hm={usu:UH,lib:LH,prest:PH};
   var sheet=sm[mod];var hdr=hm[mod];
-  var ids=prevIds[mod];
-  var btn=document.getElementById(ids.btn);if(btn)btn.disabled=true;
+  var ids=prevIds[mod];var btn=document.getElementById(ids.btn);if(btn)btn.disabled=true;
   showLd("Importando "+rows.length+" registros...");
   var allRows=rows.map(function(r){return hdr.map(function(h){return r[h]!==undefined?String(r[h]):"";});});
   apiPost({action:"addBatch",sheet:sheet,rows:allRows})
     .then(function(){
-      hideLd();
-      var okt=document.getElementById(ids.okt);if(okt)okt.textContent=rows.length+" registros importados.";
+      hideLd();var okt=document.getElementById(ids.okt);if(okt)okt.textContent=rows.length+" registros importados.";
       var ok=document.getElementById(ids.ok);if(ok){ok.classList.add("show");setTimeout(function(){ok.classList.remove("show");},5000);}
-      if(btn)btn.disabled=false;
-      clrPrev(mod);
-      if(mod==="lib")loadCat();
-      if(mod==="usu")loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});
-      if(mod==="prest")loadPrest();
+      if(btn)btn.disabled=false;clrPrev(mod);
+      if(mod==="lib")loadCat();if(mod==="usu")loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});if(mod==="prest")loadPrest();
     })
     .catch(function(){
-      // Si falla, intentar en grupos de 50
       var batchSize=50;var added=0;var idx=0;
       function nextBatch(){
         if(idx>=allRows.length){
-          hideLd();
-          var okt=document.getElementById(ids.okt);if(okt)okt.textContent=added+" registros importados.";
+          hideLd();var okt=document.getElementById(ids.okt);if(okt)okt.textContent=added+" registros importados.";
           var ok=document.getElementById(ids.ok);if(ok){ok.classList.add("show");setTimeout(function(){ok.classList.remove("show");},5000);}
-          if(btn)btn.disabled=false;
-          clrPrev(mod);
-          if(mod==="lib")loadCat();
-          if(mod==="usu")loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});
-          if(mod==="prest")loadPrest();
+          if(btn)btn.disabled=false;clrPrev(mod);
+          if(mod==="lib")loadCat();if(mod==="usu")loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});if(mod==="prest")loadPrest();
           return;
         }
         var batch=allRows.slice(idx,idx+batchSize);idx+=batchSize;
         document.getElementById("ldtxt").textContent="Importando "+Math.min(idx,allRows.length)+" de "+allRows.length+"...";
-        apiPost({action:"addBatch",sheet:sheet,rows:batch})
-          .then(function(){added+=batch.length;nextBatch();})
-          .catch(function(){nextBatch();});
+        apiPost({action:"addBatch",sheet:sheet,rows:batch}).then(function(){added+=batch.length;nextBatch();}).catch(function(){nextBatch();});
       }
       nextBatch();
     });
 }
-
 function dlTpl(tipo){
   if(typeof XLSX==="undefined"){alert("Librería no cargada.");return;}
   var hdrs={lib:LH,usu:UH,prest:PH};
-  var ws=XLSX.utils.aoa_to_sheet([hdrs[tipo]]);
-  ws["!cols"]=hdrs[tipo].map(function(){return{wch:20};});
-  var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Datos");
-  XLSX.writeFile(wb,"plantilla-"+tipo+".xlsx");
+  var ws=XLSX.utils.aoa_to_sheet([hdrs[tipo]]);ws["!cols"]=hdrs[tipo].map(function(){return{wch:20};});
+  var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Datos");XLSX.writeFile(wb,"plantilla-"+tipo+".xlsx");
 }
 
-// AVISO EDITABLE
-function loadAviso(){
-  try{var s=localStorage.getItem("llst_aviso");if(s)document.getElementById("aviso-txt").innerHTML=s;}catch(e){}
-}
-function openEditAviso(){
-  var cur=document.getElementById("aviso-txt").innerHTML;
-  document.getElementById("aviso-editor").value=cur;
-  document.getElementById("aviso-preview").innerHTML=cur;
-  document.getElementById("maviso").classList.add("open");
-}
-function saveAviso(){
-  var val=document.getElementById("aviso-editor").value;
-  document.getElementById("aviso-txt").innerHTML=val;
-  try{localStorage.setItem("llst_aviso",val);}catch(e){}
-  closeMod("maviso");
-}
-document.getElementById("aviso-editor").addEventListener("input",function(){
-  document.getElementById("aviso-preview").innerHTML=this.value;
-});
+// AVISO
+function loadAviso(){try{var s=localStorage.getItem("llst_aviso");if(s)document.getElementById("aviso-txt").innerHTML=s;}catch(e){}}
+function openEditAviso(){var cur=document.getElementById("aviso-txt").innerHTML;document.getElementById("aviso-editor").value=cur;document.getElementById("aviso-preview").innerHTML=cur;document.getElementById("maviso").classList.add("open");}
+function saveAviso(){var val=document.getElementById("aviso-editor").value;document.getElementById("aviso-txt").innerHTML=val;try{localStorage.setItem("llst_aviso",val);}catch(e){}closeMod("maviso");}
+document.getElementById("aviso-editor").addEventListener("input",function(){document.getElementById("aviso-preview").innerHTML=this.value;});
 
 // UTILS
 function closeMod(id){document.getElementById(id).classList.remove("open");}
-document.querySelectorAll(".mbg").forEach(function(m){
-  m.addEventListener("click",function(e){if(e.target===m)m.classList.remove("open");});
-});
+document.querySelectorAll(".mbg").forEach(function(m){m.addEventListener("click",function(e){if(e.target===m)m.classList.remove("open");});});
 
-// INIT
 function initHeaders(){
   var checks=[{sheet:"Libros",h:LH},{sheet:"Usuarios",h:UH},{sheet:"Prestamos",h:PH},{sheet:"Solicitudes",h:SH}];
   var p=Promise.resolve();
-  checks.forEach(function(c){
-    p=p.then(function(){
-      return apiGet(c.sheet).then(function(d){
-        if(!Array.isArray(d)||d.length===0){
-          return apiPost({action:"setHeaders",sheet:c.sheet,headers:c.h});
-        }
-      }).catch(function(){});
-    });
-  });
+  checks.forEach(function(c){p=p.then(function(){return apiGet(c.sheet).then(function(d){if(!Array.isArray(d)||d.length===0)return apiPost({action:"setHeaders",sheet:c.sheet,headers:c.h});}).catch(function(){});});});
   return p;
 }
 
