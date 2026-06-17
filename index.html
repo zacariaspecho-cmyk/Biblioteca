@@ -677,7 +677,7 @@ function goPage(p){
   var idx={"cat":0,"sol":1,"usu":2,"catadmin":3,"prest":4,"est":5};
   var btns=document.querySelectorAll(".nbtn");
   if(btns[idx[p]])btns[idx[p]].classList.add("act");
-  if(p==="sol"){loadSheet("Solicitudes",function(d){solicitudes=d;renderSol();});}
+  if(p==="sol"){loadSol();}
   if(p==="usu"){loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});}
   if(p==="catadmin"){renderCatAdmin();}
   if(p==="prest"){loadPrest();}
@@ -776,7 +776,7 @@ function renderCat(){
       :'<span style="font-size:52px">'+icono+'</span>';
     var bgColor=ip?"linear-gradient(135deg,#fff0f0,#ffe0e0)":"linear-gradient(135deg,var(--magl),var(--cyal))";
     var t1Html=b["Tema1"]?'<span class="btema">'+icono+' '+b["Tema1"]+'</span>':"";
-    var piHtml=ip?'<div class="bpinfo">📅 Prestado hasta: '+(loan.plazo||"—")+'</div>':"";
+    var piHtml=ip?'<div class="bpinfo">📅 Devolver el: '+(loan.plazo||"—")+'</div>':"";
     var dgHtml=b["Digital"]?'<a class="bsm bdgbtn btn-dig" href="'+b["Digital"]+'" target="_blank"><i class="ti ti-world"></i> Digital</a>':"";
     card.innerHTML='<div class="bcov" style="background:'+bgColor+'">'+covHtml+'<span class="ebadge '+(ip?"eprest":"edisp")+'">'+(ip?"Prestado":"Disponible")+'</span></div>'
       +'<div class="bbody">'
@@ -825,7 +825,7 @@ function openDet(b){
     ["Código",b["Código"]||"—"],["Autor",b["Autor"]||"—"],["Editorial",b["Editorial"]||"—"],
     ["Año",b["Año"]||"—"],["Páginas",b["Páginas"]||"—"],["Tema 1",(b["Tema1"]?icono+" "+b["Tema1"]:"—")],
     ["Tema 2",b["Tema2"]||"—"],["Ubicación",b["Ubicación"]||"—"],
-    ["Estado",ip?'<span style="color:#c0392b;font-weight:700">📅 Prestado hasta: '+(loan.plazo||"—")+'</span>':'<span style="color:#27ae60;font-weight:700">✅ Disponible</span>']
+    ["Estado",ip?'<span style="color:#c0392b;font-weight:700">📅 Devolver el: '+(loan.plazo||"—")+'</span>':'<span style="color:#27ae60;font-weight:700">✅ Disponible</span>']
   ];
   document.getElementById("det-rows").innerHTML=campos.map(function(c){
     return'<div class="det-row"><span class="det-k">'+c[0]+'</span><span class="det-v">'+c[1]+'</span></div>';
@@ -876,12 +876,25 @@ function envSol(){
     });
 }
 
-// SOLICITUDES (admin)
+// SOLICITUDES (admin) — recarga siempre desde Sheets
+function loadSol(){
+  showLd("Cargando solicitudes...");
+  apiGet("Solicitudes").then(function(d){
+    solicitudes=Array.isArray(d)?d:[];
+    hideLd();
+    renderSol();
+  }).catch(function(){hideLd();});
+}
 function renderSol(){
   var tb=document.getElementById("soltb");tb.innerHTML="";
+  if(!solicitudes.length){
+    tb.innerHTML="<tr><td colspan='6' style='text-align:center;color:#888;padding:20px;font-family:system-ui,sans-serif'>No hay solicitudes registradas.</td></tr>";
+    return;
+  }
   solicitudes.forEach(function(s){
     var wamsg=encodeURIComponent("Hola "+(s["Nombre"]||"")+", te contactamos por tu solicitud del libro \""+(s["Titulo"]||"")+"\" ("+(s["CodigoLibro"]||"")+"). ¡Bienvenido a Los Libros Son de Todos!");
-    var waurl="https://wa.me/591"+((s["Celular"]||"").replace(/\D/g,""))+"?text="+wamsg;
+    var cel=(s["Celular"]||"").replace(/\D/g,"");
+    var waurl="https://wa.me/"+(cel.length===8?"591":"")+cel+"?text="+wamsg;
     var tr=document.createElement("tr");
     tr.innerHTML="<td>"+(s["Fecha"]||"")+"</td><td>"+(s["CodigoLibro"]||"")+"</td><td>"+(s["Titulo"]||"")+"</td><td>"+(s["Nombre"]||"")+"</td><td>"+(s["Celular"]||"")+"</td><td><a href='"+waurl+"' target='_blank' class='bsm bpbtn' style='text-decoration:none'><i class='ti ti-brand-whatsapp'></i> WhatsApp</a></td>";
     tb.appendChild(tr);
@@ -1092,8 +1105,17 @@ function genEst(){
   showLd("Generando estadísticas...");
   Promise.all([apiGet("Prestamos"),apiGet("Usuarios")]).then(function(res){
     hideLd();
-    var prests=res[0],usus=res[1];
-    var pf=prests.filter(function(p){try{var d=new Date(p["Fecha"]);return d>=desde&&d<=hasta;}catch(e){return false;}});
+    var prests=Array.isArray(res[0])?res[0]:[];
+    var usus=Array.isArray(res[1])?res[1]:[];
+    // Filtrar por período
+    var pf=prests.filter(function(p){
+      try{
+        var fs=String(p["Fecha"]||"").split("T")[0].split(" ")[0];
+        if(!fs)return false;
+        var d=new Date(fs);
+        return d>=desde&&d<=hasta;
+      }catch(e){return false;}
+    });
     var total=pf.length;
     var lbu=new Set(pf.map(function(p){return p["CodigoLibro"];})).size;
     var uu=new Set(pf.map(function(p){return p["IDUsuario"];})).size;
@@ -1106,31 +1128,47 @@ function genEst(){
       +'<div class="scard" style="border-color:var(--cya)"><div class="sv" style="color:var(--cyad)">'+libros.length+'</div><div class="sl">Total libros</div></div>'
       +'<div class="scard" style="border-color:var(--vio)"><div class="sv" style="color:var(--vio)">'+usus.length+'</div><div class="sl">Usuarios registrados</div></div>';
     // Libros más prestados
-    var lc={};pf.forEach(function(p){var k=(p["CodigoLibro"]||"")+"||"+(p["Titulo"]||"");lc[k]=(lc[k]||0)+1;});
-    var tl=Object.entries(lc).sort(function(a,b){return b[1]-a[1];}).slice(0,8);var ml=tl[0]?tl[0][1]:1;
-    document.getElementById("estlchart").innerHTML=tl.length?tl.map(function(e){var p=e[0].split("||");return'<div class="cbar"><div class="cbl">'+(p[1]||p[0])+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/ml*100)+'%">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos.</p>";
+    var lc={};
+    pf.forEach(function(p){
+      var k=(String(p["CodigoLibro"]||""))+"||"+(String(p["Titulo"]||p["Título"]||""));
+      lc[k]=(lc[k]||0)+1;
+    });
+    var tl=Object.entries(lc).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
+    var ml=tl[0]?tl[0][1]:1;
+    document.getElementById("estlchart").innerHTML=tl.length
+      ?tl.map(function(e){var pts=e[0].split("||");return'<div class="cbar"><div class="cbl">'+(pts[1]||pts[0])+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/ml*100)+'%">'+e[1]+'</div></div></div>';}).join("")
+      :"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos en este período.</p>";
     // Por lugar
-    var lgc={};pf.forEach(function(p){var l=p["Lugar"]||"Sin lugar";lgc[l]=(lgc[l]||0)+1;});
-    var tlg=Object.entries(lgc).sort(function(a,b){return b[1]-a[1];});var mlg=tlg[0]?tlg[0][1]:1;
-    document.getElementById("estlugchart").innerHTML=tlg.length?tlg.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/mlg*100)+'%;background:linear-gradient(90deg,var(--cyad),var(--vio))">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos.</p>";
-    // Perfil usuarios — usar datos del préstamo directamente
+    var lgc={};
+    pf.forEach(function(p){var l=String(p["Lugar"]||"Sin lugar");lgc[l]=(lgc[l]||0)+1;});
+    var tlg=Object.entries(lgc).sort(function(a,b){return b[1]-a[1];});
+    var mlg=tlg[0]?tlg[0][1]:1;
+    document.getElementById("estlugchart").innerHTML=tlg.length
+      ?tlg.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/mlg*100)+'%;background:linear-gradient(90deg,var(--cyad),var(--vio))">'+e[1]+'</div></div></div>';}).join("")
+      :"<p style='color:#888;font-size:13px;font-family:system-ui,sans-serif'>Sin datos.</p>";
+    // Perfil usuarios — datos vienen en el préstamo
     var sx={};var dc={};var ages=[];
     pf.forEach(function(p){
-      var s=p["Sexo"]||"No esp.";sx[s]=(sx[s]||0)+1;
-      var d=p["Distrito"]||"No esp.";dc[d]=(dc[d]||0)+1;
-      if(p["Nacimiento"]){var a=new Date().getFullYear()-new Date(p["Nacimiento"]).getFullYear();if(a>0&&a<120)ages.push(a);}
+      var s=String(p["Sexo"]||"No esp.");if(s.trim())sx[s]=(sx[s]||0)+1;
+      var d=String(p["Distrito"]||"No esp.");if(d.trim())dc[d]=(dc[d]||0)+1;
+      var nac=String(p["Nacimiento"]||"").split("T")[0].split(" ")[0];
+      if(nac&&nac.length>=4){
+        var a=new Date().getFullYear()-new Date(nac).getFullYear();
+        if(a>0&&a<120)ages.push(a);
+      }
     });
     var pa=ages.length?Math.round(ages.reduce(function(a,b){return a+b;},0)/ages.length):null;
-    var msx=Math.max.apply(null,Object.values(sx).concat([1]));
-    var tdc=Object.entries(dc).sort(function(a,b){return b[1]-a[1];}).slice(0,5);var mdc=tdc[0]?tdc[0][1]:1;
+    var sxEntries=Object.entries(sx);var msx=Math.max.apply(null,sxEntries.map(function(e){return e[1];}).concat([1]));
+    var tdc=Object.entries(dc).sort(function(a,b){return b[1]-a[1];}).slice(0,5);
+    var mdc=tdc[0]?tdc[0][1]:1;
     document.getElementById("estusuchart").innerHTML=
       (pa?'<div style="margin-bottom:10px;font-family:system-ui,sans-serif;font-size:13px;color:#555">Edad promedio: <strong>'+pa+' años</strong></div>':"")
       +'<div style="font-weight:700;font-size:11px;color:var(--magd);font-family:system-ui,sans-serif;margin-bottom:6px;text-transform:uppercase">Por sexo</div>'
-      +Object.entries(sx).map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/msx*100)+'%;background:linear-gradient(90deg,var(--vio),var(--mag))">'+e[1]+'</div></div></div>';}).join("")
+      +(sxEntries.length?sxEntries.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/msx*100)+'%;background:linear-gradient(90deg,var(--vio),var(--mag))">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:12px;font-family:system-ui,sans-serif'>Sin datos de sexo.</p>")
       +'<div style="font-weight:700;font-size:11px;color:var(--cyad);font-family:system-ui,sans-serif;margin:12px 0 6px;text-transform:uppercase">Por distrito</div>'
-      +tdc.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/mdc*100)+'%;background:linear-gradient(90deg,var(--cyad),var(--cya))">'+e[1]+'</div></div></div>';}).join("");
+      +(tdc.length?tdc.map(function(e){return'<div class="cbar"><div class="cbl">'+e[0]+'</div><div class="cbbg"><div class="cbfill" style="width:'+Math.round(e[1]/mdc*100)+'%;background:linear-gradient(90deg,var(--cyad),var(--cya))">'+e[1]+'</div></div></div>';}).join(""):"<p style='color:#888;font-size:12px;font-family:system-ui,sans-serif'>Sin datos de distrito.</p>");
     document.getElementById("estres").style.display="block";
-  }).catch(function(){hideLd();alert("Error al cargar estadísticas.");});
+  }).catch(function(err){hideLd();console.error("Error estadísticas:",err);alert("Error al cargar estadísticas: "+err.message);});
 }
 
 // EXCEL
