@@ -680,7 +680,7 @@ function goPage(p){
   if(p==="sol"){loadSol();}
   if(p==="usu"){loadSheet("Usuarios",function(d){usuarios=d;renderUsu();});}
   if(p==="catadmin"){renderCatAdmin();}
-  if(p==="prest"){loadPrest();}
+  if(p==="prest"){loadPrest();if(!usuarios.length){loadSheet("Usuarios",function(d){usuarios=d;});}}
   if(p==="est"){setDef();}
 }
 
@@ -864,7 +864,8 @@ function envSol(){
   var cel=document.getElementById("solcel").value.trim();
   if(!nom||!cel){alert("Nombre y celular son obligatorios.");return;}
   showLd("Enviando...");
-  apiPost({action:"add",sheet:"Solicitudes",row:[new Date().toLocaleDateString("es-BO"),solLib["Código"]||"",solLib["Título"]||"",nom,cel]})
+  var hoy=new Date();var fechaSol=hoy.toISOString().split("T")[0];
+  apiPost({action:"add",sheet:"Solicitudes",row:[fechaSol,solLib["Código"]||"",solLib["Título"]||"",nom,cel]})
     .then(function(){
       hideLd();
       document.getElementById("soloktxt").textContent="¡Solicitud enviada! Te contactaremos al "+cel+".";
@@ -1037,12 +1038,30 @@ function fillLib(){
 }
 function fillUsu(){
   var uid=document.getElementById("puid").value.trim();
-  var u=usuarios.find(function(x){return norm(x["ID"]).trim()===norm(uid);});
-  document.getElementById("punom").value=u?u["Nombre"]||"":"";
-  document.getElementById("pusexo").value=u?u["Sexo"]||"":"";
-  document.getElementById("punac").value=u?u["Nacimiento"]||"":"";
-  document.getElementById("pudist").value=u?u["Distrito"]||"":"";
-  document.getElementById("pucel").value=u?u["Celular"]||"":"";
+  if(!uid){
+    ["punom","pusexo","punac","pudist","pucel"].forEach(function(i){document.getElementById(i).value="";});
+    return;
+  }
+  function applyUser(u){
+    document.getElementById("punom").value=u?u["Nombre"]||"": "";
+    document.getElementById("pusexo").value=u?u["Sexo"]||"": "";
+    document.getElementById("punac").value=u?u["Nacimiento"]||"": "";
+    document.getElementById("pudist").value=u?u["Distrito"]||"": "";
+    document.getElementById("pucel").value=u?u["Celular"]||"": "";
+    if(u){
+      document.getElementById("punom").style.background="#f0fff4";
+      setTimeout(function(){document.getElementById("punom").style.background="#f8f8f8";},1500);
+    }
+  }
+  // Buscar en memoria primero
+  var u=usuarios.find(function(x){return norm(String(x["ID"])).trim()===norm(uid);});
+  if(u){applyUser(u);return;}
+  // Si no está en memoria, cargar desde Sheets
+  loadSheet("Usuarios",function(d){
+    usuarios=d;
+    var u2=usuarios.find(function(x){return norm(String(x["ID"])).trim()===norm(uid);});
+    applyUser(u2||null);
+  });
 }
 function addPrest(){
   var fecha=document.getElementById("pfecha").value,uid=document.getElementById("puid").value.trim(),cod=document.getElementById("pcod").value.trim(),plazo=document.getElementById("pplazo").value;
