@@ -219,7 +219,7 @@ nav.hnav{background:linear-gradient(135deg,var(--mag),var(--vio));display:flex;o
 <div class="page" id="page-sol">
   <div class="fcard">
     <h3><i class="ti ti-bell" style="color:var(--mag)"></i> Solicitudes de préstamo del público</h3>
-    <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Código</th><th>Título</th><th>Nombre</th><th>Celular</th><th>WhatsApp</th></tr></thead><tbody id="soltb"></tbody></table></div>
+    <div class="twrap"><table class="dtbl"><thead><tr><th>Fecha</th><th>Código</th><th>Título</th><th>Nombre</th><th>Celular</th></tr></thead><tbody id="soltb"></tbody></table></div>
   </div>
 </div>
 
@@ -889,15 +889,13 @@ function loadSol(){
 function renderSol(){
   var tb=document.getElementById("soltb");tb.innerHTML="";
   if(!solicitudes.length){
-    tb.innerHTML="<tr><td colspan='6' style='text-align:center;color:#888;padding:20px;font-family:system-ui,sans-serif'>No hay solicitudes registradas.</td></tr>";
+    tb.innerHTML="<tr><td colspan='5' style='text-align:center;color:#888;padding:20px;font-family:system-ui,sans-serif'>No hay solicitudes registradas.</td></tr>";
     return;
   }
   solicitudes.forEach(function(s){
-    var wamsg=encodeURIComponent("Hola "+(s["Nombre"]||"")+", te contactamos por tu solicitud del libro \""+(s["Titulo"]||"")+"\" ("+(s["CodigoLibro"]||"")+"). ¡Bienvenido a Los Libros Son de Todos!");
-    var cel=(s["Celular"]||"").replace(/\D/g,"");
-    var waurl="https://wa.me/"+(cel.length===8?"591":"")+cel+"?text="+wamsg;
+    var titulo=s["Titulo"]||s["Título"]||"";
     var tr=document.createElement("tr");
-    tr.innerHTML="<td>"+(s["Fecha"]||"")+"</td><td>"+(s["CodigoLibro"]||"")+"</td><td>"+(s["Titulo"]||"")+"</td><td>"+(s["Nombre"]||"")+"</td><td>"+(s["Celular"]||"")+"</td><td><a href='"+waurl+"' target='_blank' class='bsm bpbtn' style='text-decoration:none'><i class='ti ti-brand-whatsapp'></i> WhatsApp</a></td>";
+    tr.innerHTML="<td>"+(s["Fecha"]||"")+"</td><td>"+(s["CodigoLibro"]||"")+"</td><td>"+titulo+"</td><td>"+(s["Nombre"]||"")+"</td><td>"+(s["Celular"]||"")+"</td>";
     tb.appendChild(tr);
   });
 }
